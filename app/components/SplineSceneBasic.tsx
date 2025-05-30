@@ -52,7 +52,7 @@ export function SplineSceneBasic() {
         {/* Sol içerik */}
         <div className="flex-1 flex flex-col justify-center px-4 sm:px-8 md:px-24 py-8 sm:py-16">
           <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
-            Hi I'm Melih Kochan
+            Hi I&apos;m Melih Kochan
           </h1>
           <p className="text-base sm:text-lg md:text-2xl text-gray-200 max-w-xl">
             This is a simple welcome page for now. Feel free to explore the links and discover more!
