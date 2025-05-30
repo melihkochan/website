@@ -24,7 +24,7 @@ export function SplineSceneBasic() {
 
   return (
     <div
-      className="flex flex-col w-full h-screen min-h-screen relative bg-black"
+      className="flex flex-col w-full h-screen min-h-screen relative bg-black overflow-x-hidden"
       ref={spotlightRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
@@ -48,16 +48,16 @@ export function SplineSceneBasic() {
           }}
         />
       )}
-      <div className="flex-1 flex flex-col md:flex-row w-full z-10">
+      <div className="flex-1 flex flex-col md:flex-row w-full z-10 max-w-full overflow-x-hidden">
         {/* Sol içerik */}
-        <div className="flex-1 flex flex-col justify-center px-8 md:px-24 py-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+        <div className="flex-1 flex flex-col justify-center px-4 sm:px-8 md:px-24 py-8 sm:py-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 sm:mb-6">
             Hi I'm Melih Kochan
           </h1>
-          <p className="text-lg md:text-2xl text-gray-200 max-w-xl">
+          <p className="text-base sm:text-lg md:text-2xl text-gray-200 max-w-xl">
             This is a simple welcome page for now. Feel free to explore the links and discover more!
           </p>
-          <div className="flex space-x-4 mt-6">
+          <div className="flex space-x-4 mt-4 sm:mt-6">
             <a href="https://www.linkedin.com/in/melih-kochan-7961371a2/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedin className="text-white hover:text-blue-400 transition" size={32} />
             </a>
@@ -73,8 +73,8 @@ export function SplineSceneBasic() {
           </div>
         </div>
         {/* Sağ 3D model */}
-        <div className="flex-1 relative min-h-[300px] bg-black flex items-center justify-center z-10">
-          <div className="w-full h-full relative">
+        <div className="flex-1 relative min-h-[200px] sm:min-h-[300px] bg-black flex items-center justify-center z-10">
+          <div className="w-full h-full relative max-w-full overflow-x-hidden">
             <SplineScene
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
               className="w-full h-full"

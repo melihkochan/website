@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "melihkochanwebsite",
-  description: "Modern cloud solutions for your business",
+  title: "Melih KOÇHAN - Kişisel Web Sitesi",
+  description: "Melih KOÇHAN'ın kişisel web sitesi. Yazılım, projeler ve iletişim bilgileri.",
 };
 
 export default function RootLayout({
@@ -15,7 +15,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="tr">
+      <head>
+        <link rel="icon" href="/m-favicon.svg" type="image/svg+xml" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/m-favicon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/m-favicon-16.png" />
+      </head>
       <body className={inter.className}>
         <main className="min-h-screen bg-gray-50">
           {children}
