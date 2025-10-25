@@ -34,6 +34,10 @@ export default function Home() {
     setIsLoggedIn(false)
   }
 
+  const handleLock = () => {
+    setIsLockScreenVisible(true)
+  }
+
   const toggleStartMenu = () => {
     setStartMenuOpen(!startMenuOpen)
   }
@@ -129,7 +133,7 @@ export default function Home() {
           </>
         </main>
       ) : (
-        <LoginScreen onLogin={handleLogin} />
+        <LoginScreen onLogin={handleLogin} onLock={handleLock} />
       )}
     </>
   )

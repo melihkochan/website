@@ -18,23 +18,10 @@ export default function LockScreen({ onUnlock }) {
     return () => clearInterval(timer)
   }, [])
 
-  // Fetch random landscape image from Unsplash API
+  // Pick a random image from public/images (1.jpg to 6.jpg)
   useEffect(() => {
-    const fetchBackground = async () => {
-      try {
-        // Using Unsplash Source API (no authentication needed for basic use)
-        const width = window.innerWidth
-        const height = window.innerHeight
-        const imageUrl = `https://source.unsplash.com/featured/${width}x${height}/?nature,landscape,scenic,mountains,forest,lake,ocean,sunset`
-        setBackgroundImage(imageUrl)
-      } catch (error) {
-        console.error("Error fetching background image:", error)
-        // Fallback to a default gradient if API fails
-        setBackgroundImage("")
-      }
-    }
-
-    fetchBackground()
+    const randomImageNumber = Math.floor(Math.random() * 6) + 1
+    setBackgroundImage(`/images/${randomImageNumber}.jpg`)
   }, [])
 
   const formatTime = (date) => {

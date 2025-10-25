@@ -4,7 +4,7 @@ import { useState } from "react"
 import { User, Wifi, Monitor, Power, ArrowRight } from "lucide-react"
 import styles from "./LoginScreen.module.css"
 
-export default function LoginScreen({ onLogin }) {
+export default function LoginScreen({ onLogin, onLock }) {
   const [isLoading, setIsLoading] = useState(false)
   const [fadeOut, setFadeOut] = useState(false)
 
@@ -42,24 +42,30 @@ export default function LoginScreen({ onLogin }) {
         </form>
       </div>
 
-      {/* Bottom left users */}
-      <div className={styles.userList}>
-        <div className={`${styles.userItem} ${styles.active}`}>
-          <div className={styles.userAvatar}>
-            <User size={20} color="white" />
-          </div>
-          <div className={styles.userName}>melihkochan</div>
-        </div>
-      </div>
-
       <div className={styles.systemIcons}>
-        <div className={styles.systemIcon}>
+        <div 
+          className={styles.systemIcon}
+          onClick={() => window.location.reload()}
+          title="Yenile"
+        >
           <Monitor size={18} color="white" />
         </div>
-        <div className={styles.systemIcon}>
+        <div 
+          className={styles.systemIcon}
+          onClick={() => alert("Wi-Fi ayarları")}
+          title="Wi-Fi"
+        >
           <Wifi size={18} color="white" />
         </div>
-        <div className={styles.systemIcon}>
+        <div 
+          className={styles.systemIcon}
+          onClick={() => {
+            if (onLock) {
+              onLock()
+            }
+          }}
+          title="Kilitle"
+        >
           <Power size={18} color="white" />
         </div>
       </div>
