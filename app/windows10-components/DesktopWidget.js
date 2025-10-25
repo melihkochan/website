@@ -8,6 +8,10 @@ export default function DesktopWidget() {
   const [isFading, setIsFading] = useState(false)
 
   useEffect(() => {
+    // Set initial time immediately
+    setCurrentTime(new Date())
+    
+    // Update time every second
     const timer = setInterval(() => {
       setCurrentTime(new Date())
     }, 1000)
