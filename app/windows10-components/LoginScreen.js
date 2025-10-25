@@ -43,8 +43,9 @@ export default function LoginScreen({ onLogin, onLock }) {
 
   // Brightness control
   useEffect(() => {
-    const brightnessValue = brightness / 100
-    document.body.style.filter = `brightness(${brightnessValue})`
+    // Apply brightness filter with minimum 15% for visibility
+    const minBrightness = Math.max(brightness, 15)
+    document.body.style.filter = `brightness(${minBrightness}%)`
   }, [brightness])
 
   const toggleAirplaneMode = () => {
@@ -189,7 +190,10 @@ export default function LoginScreen({ onLogin, onLock }) {
                 min="0"
                 max="100"
                 value={brightness}
-                onChange={(e) => setBrightness(Number(e.target.value))}
+                onChange={(e) => {
+                  const newBrightness = Number(e.target.value)
+                  setBrightness(newBrightness)
+                }}
                 className={styles.brightnessSlider}
               />
             </div>
