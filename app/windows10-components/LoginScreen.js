@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { User, Wifi, Power, ArrowRight, WifiOff, Volume2, Sun, Bluetooth, Plane, Bell, BatteryLow } from "lucide-react"
+import { Wifi, Power, ArrowRight, WifiOff, Volume2, Sun, Bluetooth, Plane, Bell, BatteryLow } from "lucide-react"
 import styles from "./LoginScreen.module.css"
 
 export default function LoginScreen({ onLogin, onLock }) {
