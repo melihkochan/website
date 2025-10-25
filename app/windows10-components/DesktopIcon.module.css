@@ -164,3 +164,45 @@
 .contextMenuItem:active {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .iconContainer {
+    width: 100px;
+    height: 110px;
+    padding: 10px;
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    padding: 12px;
+  }
+
+  .label {
+    font-size: 11px !important;
+    min-height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .iconContainer {
+    width: 80px;
+    height: 90px;
+    padding: 8px;
+  }
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .label {
+    font-size: 10px !important;
+    min-height: 24px;
+    padding: 2px 4px !important;
+  }
+}

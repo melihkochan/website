@@ -57,3 +57,24 @@ textarea {
   height: 100%;
   width: 100%;
 }
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  #__next {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+@media (max-width: 480px) {
+  html, body {
+    font-size: 14px;
+  }
+}

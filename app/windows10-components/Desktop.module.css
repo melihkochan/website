@@ -17,6 +17,33 @@
   z-index: 1;
 }
 
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .desktop {
+    padding-top: 80px;
+  }
+
+  .iconGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    max-width: 100%;
+    width: calc(100% - 30px);
+  }
+}
+
+@media (max-width: 480px) {
+  .desktop {
+    padding-top: 60px;
+  }
+
+  .iconGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+}
+
 .iconGrid > *:nth-child(1) {
   grid-column: 1 / -1;
   margin-bottom: 20px;
