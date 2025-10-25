@@ -111,7 +111,7 @@
 }
 
 .trayIcon {
-  width: 24px;
+  width: 60px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -165,6 +165,276 @@
   white-space: nowrap;
   pointer-events: none;
   z-index: 1001;
+}
+
+.quickSettings {
+  position: absolute;
+  bottom: 45px;
+  right: 0;
+  width: 380px;
+  background-color: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  animation: slideUp 0.2s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quickSettingRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.quickSettingTile {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.quickSettingTile:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.settingTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  margin-top: 8px;
+}
+
+.settingSubtitle {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+}
+
+.indicator {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.quickSettingItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.quickSettingItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.quickSettingItem:last-child {
+  margin-bottom: 0;
+}
+
+.settingInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 80px;
+}
+
+.settingLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+.settingStatus {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.settingValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  min-width: 40px;
+  text-align: right;
+}
+
+.progressBar {
+  flex: 1;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.2s ease;
+}
+
+.volumeSlider,
+.brightnessSlider {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9e62e8;
+  cursor: pointer;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #9e62e8;
+  cursor: pointer;
+  border: none;
+}
+
+.brightnessSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff9800;
+  cursor: pointer;
+}
+
+.brightnessSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff9800;
+  cursor: pointer;
+  border: none;
+}
+
+.actionButton {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.actionButton div {
+  font-size: 11px;
+}
+
+.calendar {
+  position: absolute;
+  bottom: 45px;
+  right: 0;
+  width: 280px;
+  background-color: rgba(30, 30, 30, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  z-index: 1001;
+  animation: slideUp 0.2s ease-out;
+}
+
+.calendarHeader {
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.calendarTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendarDayName {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 4px;
+}
+
+.calendarDay {
+  text-align: center;
+  font-size: 12px;
+  padding: 8px 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.calendarDay.currentMonth {
+  color: white;
+}
+
+.calendarDay.otherMonth {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.calendarDay.today {
+  background-color: #0078D7;
+  font-weight: 600;
+  color: white;
+}
+
+.calendarDay:hover:not(.today) {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Media queries for responsive design */
