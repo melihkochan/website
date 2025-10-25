@@ -44,14 +44,23 @@ export default function Desktop({
     openWindow(app)
   }
 
-  const handleDesktopClick = (e) => {
+  const handleDesktopClick = () => {
     setSelectedIcon(null)
     setActiveWindow(null)
   }
 
   const handleMouseDown = (e) => {
-    // Only start selection on desktop, not on icons or windows
-    if (e.target === e.currentTarget || e.target.className === styles.desktop) {
+    // Start selection on desktop background, not on icons or windows
+    // Check if click target is the desktop container or its direct children (like iconGrid)
+    const target = e.target
+    const isClickingDesktop = target === desktopRef.current || 
+                              (desktopRef.current && desktopRef.current.contains(target))
+    
+    // Don't start selection if clicking on an icon
+    const isClickingIcon = target.closest('[class*="iconContainer"]') || 
+                           target.closest('[class*="DesktopIcon"]')
+    
+    if (isClickingDesktop && !isClickingIcon) {
       setIsSelecting(true)
       const rect = desktopRef.current.getBoundingClientRect()
       setSelectionStart({
@@ -131,7 +140,7 @@ export default function Desktop({
       {isSelecting && (
         <div style={selectionStyle} />
       )}
-      <div className={styles.iconGrid} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.iconGrid}>
         {desktopApps.map((app) => (
           <DesktopIcon
             key={app.id}

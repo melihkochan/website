@@ -18,6 +18,8 @@ import InstagramBrowser from "./InstagramBrowser"
 import MailBrowser from "./MailBrowser"
 import FileExplorer from "./FileExplorer"
 import ResumePdfViewer from "./ResumePdfViewer"
+import SpotifyPlayer from "./SpotifyPlayer"
+import Notepad from "./Notepad"
 
 function getInitialWindowPosition(appId) {
   // Get window dimensions
@@ -91,6 +93,26 @@ function getInitialWindowPosition(appId) {
     if (appId === "resume-pdf") {
       width = Math.min(900, windowWidth * 0.8) // 80% of screen width, max 900px
       height = Math.min(800, windowHeight * 0.85) // 85% of screen height, max 800px
+
+      // Center the window
+      left = Math.max(0, (windowWidth - width) / 2)
+      top = Math.max(0, (windowHeight - height - 40) / 3) // Account for taskbar
+    }
+
+    // Specific adjustment for Spotify
+    if (appId === "spotify") {
+      width = Math.min(1200, windowWidth * 0.9) // 90% of screen width, max 1200px
+      height = Math.min(800, windowHeight * 0.85) // 85% of screen height, max 800px
+
+      // Center the window
+      left = Math.max(0, (windowWidth - width) / 2)
+      top = Math.max(0, (windowHeight - height - 40) / 3) // Account for taskbar
+    }
+
+    // Specific adjustment for Notepad
+    if (appId === "notepad") {
+      width = Math.min(600, windowWidth * 0.6) // 60% of screen width, max 600px
+      height = Math.min(500, windowHeight * 0.6) // 60% of screen height, max 500px
 
       // Center the window
       left = Math.max(0, (windowWidth - width) / 2)
@@ -204,6 +226,10 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
         return <FileExplorer openWindow={app.openWindow} />
       case "resume-pdf":
         return <ResumePdfViewer />
+      case "spotify":
+        return <SpotifyPlayer />
+      case "notepad":
+        return <Notepad />
       default:
         return (
           <div className={styles.emptyContent}>
