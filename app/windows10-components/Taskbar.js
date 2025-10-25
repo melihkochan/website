@@ -147,7 +147,6 @@ export default function Taskbar({
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="#0078D7" />
-              <path d="M12 4L4 8.5L12 13L20 8.5L12 4Z" fill cy="12" r="10" fill="#0078D7" />
               <path d="M12 4L4 8.5L12 13L20 8.5L12 4Z" fill="#fff" />
               <path d="M4 8.5V15.5L12 20L20 15.5V8.5" stroke="#fff" strokeWidth="1" />
             </svg>

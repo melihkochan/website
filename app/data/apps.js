@@ -12,7 +12,6 @@ import {
   Github,
   Linkedin,
   Instagram,
-  Music,
   FileText,
 } from "lucide-react"
 

@@ -11,7 +11,6 @@ export default function Desktop({
   openWindows,
   closeWindow,
   minimizeWindow,
-  minimizedWindows,
   activeWindow,
   setActiveWindow,
 }) {
@@ -24,15 +23,15 @@ export default function Desktop({
 
   // Initialize z-indexes for windows
   useEffect(() => {
-    const newZIndexes = {}
-    openWindows.forEach((window, index) => {
-      if (!windowZIndexes[window.id]) {
-        newZIndexes[window.id] = 100 + index
-      } else {
-        newZIndexes[window.id] = windowZIndexes[window.id]
-      }
+    setWindowZIndexes((prev) => {
+      const newZIndexes = { ...prev }
+      openWindows.forEach((window, index) => {
+        if (!newZIndexes[window.id]) {
+          newZIndexes[window.id] = 100 + index
+        }
+      })
+      return newZIndexes
     })
-    setWindowZIndexes({ ...windowZIndexes, ...newZIndexes })
   }, [openWindows])
 
   const handleIconClick = (e, app) => {
@@ -103,13 +102,26 @@ export default function Desktop({
 
   // Add event listeners for mouse events
   useEffect(() => {
-    const handleGlobalMouseMove = (e) => handleMouseMove(e)
-    const handleGlobalMouseUp = () => handleMouseUp()
+    if (!isSelecting) return
 
-    if (isSelecting) {
-      document.addEventListener('mousemove', handleGlobalMouseMove)
-      document.addEventListener('mouseup', handleGlobalMouseUp)
+    const handleGlobalMouseMove = (e) => {
+      if (desktopRef.current) {
+        const rect = desktopRef.current.getBoundingClientRect()
+        setSelectionEnd({
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        })
+      }
     }
+
+    const handleGlobalMouseUp = () => {
+      setIsSelecting(false)
+      setSelectionStart({ x: 0, y: 0 })
+      setSelectionEnd({ x: 0, y: 0 })
+    }
+
+    document.addEventListener('mousemove', handleGlobalMouseMove)
+    document.addEventListener('mouseup', handleGlobalMouseUp)
 
     return () => {
       document.removeEventListener('mousemove', handleGlobalMouseMove)

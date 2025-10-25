@@ -6,7 +6,6 @@ import Taskbar from "./windows10-components/Taskbar"
 import StartMenu from "./windows10-components/StartMenu"
 import WindowsLogo from "./windows10-components/WindowsLogo"
 import LoginScreen from "./windows10-components/LoginScreen"
-import Loader from "./windows10-components/Loader"
 import styles from "./page.module.css"
 
 export default function Home() {
@@ -15,8 +14,6 @@ export default function Home() {
   const [openWindows, setOpenWindows] = useState([])
   const [activeWindow, setActiveWindow] = useState(null)
   const [minimizedWindows, setMinimizedWindows] = useState([])
-  const [loaderVisible, setLoaderVisible] = useState(false)
-  const [loaderFading, setLoaderFading] = useState(false)
   const contentRef = useRef(null)
 
   // Directly show desktop, no login screen or loader
@@ -95,10 +92,6 @@ export default function Home() {
           ref={contentRef}
           className={styles.main}
           onClick={handleDesktopClick}
-          style={{
-            filter: loaderVisible ? "blur(5px)" : "none",
-            transition: "filter 0.5s ease-out",
-          }}
         >
           <>
             <WindowsLogo />

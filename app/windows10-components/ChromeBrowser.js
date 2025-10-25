@@ -11,10 +11,7 @@ export default function ChromeBrowser() {
   const [isLoading, setIsLoading] = useState(true)
   const [history, setHistory] = useState(["https://www.melihkochan.com"])
   const [historyIndex, setHistoryIndex] = useState(0)
-  const [searchQuery, setSearchQuery] = useState("")
   const browserContentRef = useRef(null)
-  const mockContentRef = useRef(null)
-  const browserRef = useRef(null)
   const iframeRef = useRef(null)
 
   useEffect(() => {
@@ -152,7 +149,7 @@ export default function ChromeBrowser() {
     try {
       const urlObj = new URL(url)
       return urlObj.hostname
-    } catch (e) {
+    } catch {
       return url
     }
   }

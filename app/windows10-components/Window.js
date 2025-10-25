@@ -155,7 +155,7 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
     if (isActive && isMinimized) {
       setIsMinimized(false)
     }
-  }, [isActive])
+  }, [isActive, isMinimized])
 
   const toggleMaximize = (e) => {
     e.stopPropagation()
@@ -187,13 +187,7 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
     }
   }
 
-  const handleWindowClick = (e) => {
-    // Only focus if clicking on the window itself, not on child elements
-    if (e.target === e.currentTarget || e.target.closest('.titleBar')) {
-      e.stopPropagation()
-      onFocus()
-    }
-  }
+  // Removed unused handleWindowClick function
 
   // Render specific content based on app ID
   const renderAppContent = () => {
