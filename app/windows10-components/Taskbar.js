@@ -1,6 +1,6 @@
 "use client"
 import styles from "./Taskbar.module.css"
-import { Search, Monitor, Mail, Wifi, Volume2, Plane, Bell, BatteryLow, Sun, Bluetooth } from "lucide-react"
+import { Search, Monitor, Mail, Wifi, Volume2, Plane, Bell, BatteryLow, Sun, Bluetooth, Folder } from "lucide-react"
 import { useState, useEffect } from "react"
 import { allApps } from "../data/apps"
 
@@ -190,7 +190,7 @@ export default function Taskbar({
             } ${isAppMinimized("file-explorer") ? styles.minimizedApp : ""}`}
             onClick={() => handleOpenApp("file-explorer")}
             onMouseEnter={() => {
-              setShowTooltip("File Explorer")
+              setShowTooltip("Dosya Gezgini")
               setHoveredIcon("file-explorer")
             }}
             onMouseLeave={() => {
@@ -201,91 +201,14 @@ export default function Taskbar({
               backgroundColor: hoveredIcon === "file-explorer" ? "rgba(255, 255, 255, 0.1)" : "transparent",
             }}
           >
-            <Monitor size={26} color="#fff" />
-            {showTooltip === "File Explorer" && <div className={styles.tooltip}>File Explorer</div>}
-          </div>
-
-          {/* Edge */}
-          <div
-            className={`${styles.taskbarIcon} ${
-              openWindows.some((w) => w.id === "edge") ? styles.activeApp : ""
-            } ${isAppMinimized("edge") ? styles.minimizedApp : ""}`}
-            onClick={() => handleOpenApp("edge")}
-            onMouseEnter={() => {
-              setShowTooltip("Microsoft Edge")
-              setHoveredIcon("edge")
-            }}
-            onMouseLeave={() => {
-              setShowTooltip(null)
-              setHoveredIcon(null)
-            }}
-            style={{
-              backgroundColor: hoveredIcon === "edge" ? "rgba(255, 255, 255, 0.1)" : "transparent",
-            }}
-          >
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="12" cy="12" r="10" fill="#0078D7" />
-              <path d="M12 4L4 8.5L12 13L20 8.5L12 4Z" fill="#fff" />
-              <path d="M4 8.5V15.5L12 20L20 15.5V8.5" stroke="#fff" strokeWidth="1" />
-            </svg>
-            {showTooltip === "Microsoft Edge" && <div className={styles.tooltip}>Microsoft Edge</div>}
-          </div>
-
-          {/* Chrome */}
-          <div
-            className={`${styles.taskbarIcon} ${
-              openWindows.some((w) => w.id === "chrome") ? styles.activeApp : ""
-            } ${isAppMinimized("chrome") ? styles.minimizedApp : ""}`}
-            onClick={() => handleOpenApp("chrome")}
-            onMouseEnter={() => {
-              setShowTooltip("Chrome")
-              setHoveredIcon("chrome")
-            }}
-            onMouseLeave={() => {
-              setShowTooltip(null)
-              setHoveredIcon(null)
-            }}
-            style={{
-              backgroundColor: hoveredIcon === "chrome" ? "rgba(255, 255, 255, 0.1)" : "transparent",
-            }}
-          >
-            <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="24" cy="24" r="20" fill="#4285F4" />
-              <circle cx="24" cy="24" r="8" fill="white" />
-              <path d="M24 12L42 12" stroke="white" strokeWidth="8" strokeLinecap="round" />
-              <path d="M6 12L12 12" stroke="#EA4335" strokeWidth="8" strokeLinecap="round" />
-              <path d="M10 32L16 18" stroke="#FBBC05" strokeWidth="8" strokeLinecap="round" />
-              <path d="M32 18L38 32" stroke="#34A853" strokeWidth="8" strokeLinecap="round" />
-            </svg>
-            {showTooltip === "Chrome" && <div className={styles.tooltip}>Chrome</div>}
-          </div>
-
-          {/* Mail */}
-          <div
-            className={`${styles.taskbarIcon} ${
-              openWindows.some((w) => w.id === "mail") ? styles.activeApp : ""
-            } ${isAppMinimized("mail") ? styles.minimizedApp : ""}`}
-            onClick={() => handleOpenApp("mail")}
-            onMouseEnter={() => {
-              setShowTooltip("Mail")
-              setHoveredIcon("mail")
-            }}
-            onMouseLeave={() => {
-              setShowTooltip(null)
-              setHoveredIcon(null)
-            }}
-            style={{
-              backgroundColor: hoveredIcon === "mail" ? "rgba(255, 255, 255, 0.1)" : "transparent",
-            }}
-          >
-            <Mail size={26} color="#fff" />
-            {showTooltip === "Mail" && <div className={styles.tooltip}>Mail</div>}
+            <Folder size={26} color="#0078d7" />
+            {showTooltip === "Dosya Gezgini" && <div className={styles.tooltip}>Dosya Gezgini</div>}
           </div>
 
           {/* Show active windows in taskbar */}
           {openWindows.map((window) => {
             // Skip if the app is already in the pinned section
-            if (["file-explorer", "edge", "chrome", "mail"].includes(window.id)) return null
+            if (["file-explorer"].includes(window.id)) return null
 
             return (
               <div

@@ -106,29 +106,14 @@ const portfolioApps = [
     name: "Eğitim",
     icon: <GraduationCap size={24} color="#0078d7" />,
   },
-  {
-    id: "instagram",
-    name: "Instagram",
-    icon: <Instagram size={24} color="#E4405F" />,
-  },
 ]
 
 // Essential Windows apps to keep in the Start Menu
 const essentialWindowsApps = [
   {
-    id: "file-explorer",
-    name: "Dosya Gezgini",
-    icon: <Folder size={24} color="#0078d7" />,
-  },
-  {
     id: "mail",
     name: "E-posta",
     icon: <Mail size={24} color="#0078d7" />,
-  },
-  {
-    id: "notepad",
-    name: "Not Defteri",
-    icon: <FileText size={24} color="#0078d7" />,
   },
 ]
 

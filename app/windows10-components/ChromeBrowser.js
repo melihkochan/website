@@ -6,10 +6,10 @@ import { ArrowLeft, ArrowRight, RotateCcw, Home, Star, Menu, X, Search, Globe } 
 import styles from "./ChromeBrowser.module.css"
 
 export default function ChromeBrowser() {
-  const [url, setUrl] = useState("https://www.melihkochan.com")
-  const [inputUrl, setInputUrl] = useState("www.melihkochan.com")
+  const [url, setUrl] = useState("https://www.google.com/webhp?igu=1")
+  const [inputUrl, setInputUrl] = useState("https://www.google.com/webhp?igu=1")
   const [isLoading, setIsLoading] = useState(true)
-  const [history, setHistory] = useState(["https://www.melihkochan.com"])
+  const [history, setHistory] = useState(["https://www.google.com/webhp?igu=1"])
   const [historyIndex, setHistoryIndex] = useState(0)
   const browserContentRef = useRef(null)
   const iframeRef = useRef(null)
@@ -134,7 +134,7 @@ export default function ChromeBrowser() {
 
   const goHome = () => {
     setIsLoading(true)
-    const homeUrl = "https://www.melihkochan.com"
+    const homeUrl = "https://www.google.com/webhp?igu=1"
     setUrl(homeUrl)
 
     // Add to history
