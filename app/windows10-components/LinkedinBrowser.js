@@ -80,9 +80,9 @@ export default function LinkedinBrowser() {
                 </g>
               </svg>
             </div>
-            <h2 className={styles.externalSiteTitle}>LinkedIn Profile</h2>
+            <h2 className={styles.externalSiteTitle}>LinkedIn Profili</h2>
             <p className={styles.externalSiteDescription}>
-              Due to security restrictions, LinkedIn cannot be displayed in this window.
+              Güvenlik kısıtlamaları nedeniyle LinkedIn bu pencerede görüntülenemez.
             </p>
             <a
               href="https://www.linkedin.com/in/melih-kochan-7961371a2/"
@@ -91,7 +91,7 @@ export default function LinkedinBrowser() {
               className={styles.externalSiteButton}
             >
               <ExternalLink size={16} className={styles.externalLinkIcon} />
-              Open LinkedIn Profile
+              LinkedIn Profilini Aç
             </a>
           </div>
         )}

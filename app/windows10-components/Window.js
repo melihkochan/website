@@ -13,6 +13,8 @@ import EducationFolder from "./EducationFolder"
 import GithubBrowser from "./GithubBrowser"
 import LinkedinBrowser from "./LinkedinBrowser"
 import InstagramBrowser from "./InstagramBrowser"
+import TwitterBrowser from "./TwitterBrowser"
+import YouTubeBrowser from "./YouTubeBrowser"
 import MailBrowser from "./MailBrowser"
 import FileExplorer from "./FileExplorer"
 import SpotifyPlayer from "./SpotifyPlayer"
@@ -207,6 +209,10 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
         return <LinkedinBrowser />
       case "instagram":
         return <InstagramBrowser />
+      case "twitter":
+        return <TwitterBrowser />
+      case "youtube":
+        return <YouTubeBrowser />
       case "mail":
         return <MailBrowser />
       case "file-explorer":

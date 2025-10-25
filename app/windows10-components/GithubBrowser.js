@@ -80,9 +80,9 @@ export default function GithubBrowser() {
                 ></path>
               </svg>
             </div>
-            <h2 className={styles.externalSiteTitle}>GitHub Profile</h2>
+            <h2 className={styles.externalSiteTitle}>GitHub Profili</h2>
             <p className={styles.externalSiteDescription}>
-              Due to security restrictions, GitHub cannot be displayed in this window.
+              Güvenlik kısıtlamaları nedeniyle GitHub bu pencerede görüntülenemez.
             </p>
             <a
               href="https://github.com/melihkochan"
@@ -91,7 +91,7 @@ export default function GithubBrowser() {
               className={styles.externalSiteButton}
             >
               <ExternalLink size={16} className={styles.externalLinkIcon} />
-              Open GitHub Profile
+              GitHub Profilini Aç
             </a>
           </div>
         )}
