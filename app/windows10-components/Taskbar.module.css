@@ -175,17 +175,17 @@
   bottom: 45px;
   right: 0;
   width: 380px;
+  padding: 20px;
   background: rgba(30, 30, 30, 0.85);
   backdrop-filter: blur(40px) saturate(180%);
   border-radius: 16px;
-  padding: 16px;
   box-shadow: 
     0 20px 60px rgba(0, 0, 0, 0.5),
     0 8px 32px rgba(0, 0, 0, 0.4),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1001;
   animation: slideUp 0.2s ease-out;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes slideUp {
@@ -199,6 +199,12 @@
   }
 }
 
+.quickSettingsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .quickSettingRow {
   display: flex;
   gap: 12px;
@@ -208,9 +214,8 @@
 .quickSettingTile {
   flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  gap: 12px;
   padding: 16px 12px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px) saturate(180%);
@@ -244,26 +249,39 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.settingTitle {
-  font-size: 12px;
+.quickSettingIcon {
+  display: flex;
+  align-items: center;
+}
+
+.quickSettingText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.quickSettingLabel {
+  font-size: 14px;
   font-weight: 500;
   color: white;
-  margin-top: 8px;
 }
 
-.settingSubtitle {
-  font-size: 11px;
+.quickSettingValue {
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.6);
-  margin-top: 2px;
 }
 
-.indicator {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  width: 8px;
-  height: 8px;
+.statusDot {
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  background-color: #888;
+  transition: background-color 0.3s;
+}
+
+.statusDot.active {
+  background-color: #4CAF50;
 }
 
 .quickSettingItem {
@@ -274,7 +292,6 @@
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px) saturate(180%);
-  margin-bottom: 8px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.2),
@@ -286,30 +303,21 @@
   transform: translateX(2px);
 }
 
-.quickSettingItem:last-child {
-  margin-bottom: 0;
-}
-
-.settingInfo {
+.quickSettingItemContent {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  justify-content: space-between;
+  align-items: center;
   min-width: 80px;
 }
 
-.settingLabel {
+.quickSettingItemLabel {
   font-size: 14px;
   font-weight: 500;
   color: white;
 }
 
-.settingStatus {
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.settingValue {
+.quickSettingItemValue {
   font-size: 14px;
   font-weight: 500;
   color: white;
@@ -317,7 +325,7 @@
   text-align: right;
 }
 
-.progressBar {
+.batteryBar {
   flex: 1;
   height: 4px;
   background-color: rgba(255, 255, 255, 0.2);
@@ -325,9 +333,9 @@
   overflow: hidden;
 }
 
-.progressFill {
+.batteryBarFill {
   height: 100%;
-  background-color: #4caf50;
+  background-color: #4CAF50;
   transition: width 0.2s ease;
 }
 
@@ -381,18 +389,15 @@
 }
 
 .actionButton {
-  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 12px;
+  gap: 12px;
+  padding: 12px 16px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px) saturate(180%);
-  border: none;
   border-radius: 12px;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 
@@ -427,10 +432,6 @@
   box-shadow: 
     0 2px 8px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.actionButton div {
-  font-size: 11px;
 }
 
 .calendar {

@@ -1,6 +1,6 @@
 "use client"
 import styles from "./Taskbar.module.css"
-import { Search, Monitor, Mail, Wifi, Volume2 } from "lucide-react"
+import { Search, Monitor, Mail, Wifi, Volume2, Plane, Bell, BatteryLow, Sun, Bluetooth } from "lucide-react"
 import { useState, useEffect } from "react"
 import { allApps } from "../data/apps"
 
@@ -41,6 +41,24 @@ export default function Taskbar({
     // Cleanup
     return () => window.removeEventListener("resize", checkScreenSize)
   }, [])
+
+  // Brightness control
+  useEffect(() => {
+    // Apply brightness filter with minimum 15% for visibility
+    const minBrightness = Math.max(brightness, 15)
+    document.body.style.filter = `brightness(${minBrightness}%)`
+  }, [brightness])
+
+  // Volume control
+  useEffect(() => {
+    // Control all audio/video elements on the page
+    const allMedia = document.querySelectorAll('audio, video')
+    allMedia.forEach(media => {
+      if (media.volume !== undefined) {
+        media.volume = volume / 100
+      }
+    })
+  }, [volume])
 
   // Find apps by ID to open them from the taskbar
   const handleOpenApp = (appId) => {
@@ -328,99 +346,105 @@ export default function Taskbar({
 
         {showQuickSettings && (
           <div className={styles.quickSettings} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.quickSettingRow}>
-              <div className={styles.quickSettingTile} onClick={() => setWifiEnabled(!wifiEnabled)} style={{ border: `2px solid ${wifiEnabled ? "#4CAF50" : "rgba(255,255,255,0.1)"}` }}>
-                <Wifi size={32} color={wifiEnabled ? "#4CAF50" : "#999"} />
-                <div className={styles.settingTitle}>Wi-Fi</div>
-                <div className={styles.settingSubtitle}>{wifiEnabled ? "KOCHAN" : "Kapalı"}</div>
-                <div className={styles.indicator} style={{ backgroundColor: wifiEnabled ? "#4CAF50" : "#666" }}></div>
+            <div className={styles.quickSettingsGrid}>
+              {/* Wi-Fi Tile */}
+              <div 
+                className={styles.quickSettingTile}
+                onClick={() => {
+                  const newWifiEnabled = !wifiEnabled
+                  setWifiEnabled(newWifiEnabled)
+                  if (newWifiEnabled && airplaneMode) {
+                    setAirplaneMode(false)
+                  }
+                }}
+                style={{ border: `2px solid ${wifiEnabled ? "#4CAF50" : "rgba(255,255,255,0.1)"}` }}
+              >
+                <div className={styles.quickSettingIcon}>
+                  <Wifi size={24} color={wifiEnabled ? "#4CAF50" : "#999"} />
+                </div>
+                <div className={styles.quickSettingText}>
+                  <div className={styles.quickSettingLabel}>Wi-Fi</div>
+                  <div className={styles.quickSettingValue}>{wifiEnabled ? "KOCHAN" : "Kapalı"}</div>
+                </div>
+                <div className={`${styles.statusDot} ${wifiEnabled ? styles.active : ""}`}></div>
               </div>
 
-              <div className={styles.quickSettingTile} onClick={() => setBluetoothEnabled(!bluetoothEnabled)} style={{ border: `2px solid ${bluetoothEnabled ? "#0078D7" : "rgba(255,255,255,0.1)"}` }}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M17.71 7.71L12 2H11V9.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L11 14.41V22H12L17.71 16.29L13.41 12L17.71 7.71Z"
-                    fill={bluetoothEnabled ? "#0078D7" : "#999"}
-                  />
-                </svg>
-                <div className={styles.settingTitle}>Bluetooth</div>
-                <div className={styles.settingSubtitle}>{bluetoothEnabled ? "Açık" : "Kapalı"}</div>
-                <div className={styles.indicator} style={{ backgroundColor: bluetoothEnabled ? "#0078D7" : "#666" }}></div>
+              {/* Bluetooth Tile */}
+              <div 
+                className={styles.quickSettingTile}
+                onClick={() => {
+                  const newBluetoothEnabled = !bluetoothEnabled
+                  setBluetoothEnabled(newBluetoothEnabled)
+                  if (newBluetoothEnabled && airplaneMode) {
+                    setAirplaneMode(false)
+                  }
+                }}
+                style={{ border: `2px solid ${bluetoothEnabled ? "#0078D7" : "rgba(255,255,255,0.1)"}` }}
+              >
+                <div className={styles.quickSettingIcon}>
+                  <Bluetooth size={24} color={bluetoothEnabled ? "#0078D7" : "#999"} />
+                </div>
+                <div className={styles.quickSettingText}>
+                  <div className={styles.quickSettingLabel}>Bluetooth</div>
+                  <div className={styles.quickSettingValue}>{bluetoothEnabled ? "Açık" : "Kapalı"}</div>
+                </div>
+                <div className={`${styles.statusDot} ${bluetoothEnabled ? styles.active : ""}`}></div>
               </div>
-            </div>
 
-            <div className={styles.quickSettingItem}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
-                  fill="#FF9800"
+              {/* Battery */}
+              <div className={styles.quickSettingItem}>
+                <BatteryLow size={20} color="#FF9800" />
+                <div className={styles.quickSettingItemContent}>
+                  <div className={styles.quickSettingItemLabel}>Pil</div>
+                  <div className={styles.quickSettingItemValue}>69%</div>
+                </div>
+                <div className={styles.batteryBar}>
+                  <div className={styles.batteryBarFill} style={{ width: "69%" }}></div>
+                </div>
+              </div>
+
+              {/* Volume Slider */}
+              <div className={styles.quickSettingItem}>
+                <Volume2 size={20} color="#9E62E8" />
+                <div className={styles.quickSettingItemContent}>
+                  <div className={styles.quickSettingItemLabel}>Ses</div>
+                  <div className={styles.quickSettingItemValue}>{volume}%</div>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={volume}
+                  onChange={(e) => setVolume(Number(e.target.value))}
+                  className={styles.volumeSlider}
                 />
-              </svg>
-              <div className={styles.settingInfo}>
-                <div className={styles.settingLabel}>Pil</div>
-                <div className={styles.settingStatus}>Enerji Tasarrufu</div>
               </div>
-              <div className={styles.settingValue}>69%</div>
-              <div className={styles.progressBar}>
-                <div className={styles.progressFill} style={{ width: "69%" }}></div>
-              </div>
-            </div>
 
-            <div className={styles.quickSettingItem}>
-              <Volume2 size={20} color="#9E62E8" />
-              <div className={styles.settingInfo}>
-                <div className={styles.settingLabel}>Ses</div>
+              {/* Brightness Slider */}
+              <div className={styles.quickSettingItem}>
+                <Sun size={20} color="#ff9800" />
+                <div className={styles.quickSettingItemContent}>
+                  <div className={styles.quickSettingItemLabel}>Parlaklık</div>
+                  <div className={styles.quickSettingItemValue}>{brightness}%</div>
+                </div>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value={brightness}
+                  onChange={(e) => {
+                    const newBrightness = Number(e.target.value)
+                    setBrightness(newBrightness)
+                    // Apply brightness filter with minimum 15% for visibility
+                    const minBrightness = Math.max(newBrightness, 15)
+                    document.body.style.filter = `brightness(${minBrightness}%)`
+                  }}
+                  className={styles.brightnessSlider}
+                />
               </div>
-              <div className={styles.settingValue}>{volume}%</div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={volume}
-                onChange={(e) => {
-                  const newVolume = parseInt(e.target.value)
-                  setVolume(newVolume)
-                  // Control all audio/video elements on the page
-                  const allMedia = document.querySelectorAll('audio, video')
-                  allMedia.forEach(media => {
-                    if (media.volume !== undefined) {
-                      media.volume = newVolume / 100
-                    }
-                  })
-                  // Spotify iframe: Cannot control volume due to cross-origin restrictions
-                  // No visual feedback applied
-                }}
-                className={styles.volumeSlider}
-              />
-            </div>
 
-            <div className={styles.quickSettingItem}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="5" fill="#FF9800" />
-                <path d="M12 1V7M12 17V23M4 12H10M14 12H20" stroke="#FF9800" strokeWidth="2" />
-              </svg>
-              <div className={styles.settingInfo}>
-                <div className={styles.settingLabel}>Parlaklık</div>
-              </div>
-              <div className={styles.settingValue}>{brightness}%</div>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value={brightness}
-                onChange={(e) => {
-                  const newBrightness = parseInt(e.target.value)
-                  setBrightness(newBrightness)
-                  // Apply brightness filter with minimum 20% for visibility
-                  const minBrightness = Math.max(newBrightness, 20)
-                  document.body.style.filter = `brightness(${minBrightness}%)`
-                }}
-                className={styles.brightnessSlider}
-              />
-            </div>
-
-            <div className={styles.quickSettingRow}>
-              <button
+              {/* Airplane Mode */}
+              <div 
                 className={styles.actionButton}
                 onClick={() => {
                   setAirplaneMode(!airplaneMode)
@@ -431,29 +455,27 @@ export default function Taskbar({
                     setWifiEnabled(true)
                   }
                 }}
-                style={{ backgroundColor: airplaneMode ? "rgba(0, 120, 215, 0.3)" : "rgba(255, 255, 255, 0.05)", border: `2px solid ${airplaneMode ? "#0078D7" : "transparent"}` }}
+                style={{ 
+                  backgroundColor: airplaneMode ? "rgba(0, 120, 215, 0.3)" : "rgba(255, 255, 255, 0.05)", 
+                  border: `2px solid ${airplaneMode ? "#0078D7" : "transparent"}` 
+                }}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M21 16V14C21 12.9 20.1 12 19 12H5C3.9 12 3 12.9 3 14V16C3 17.1 3.9 18 5 18H19C20.1 18 21 17.1 21 16ZM21 10V8C21 6.9 20.1 6 19 6H5C3.9 6 3 6.9 3 8V10C3 11.1 3.9 12 5 12H19C20.1 12 21 11.1 21 10Z"
-                    fill={airplaneMode ? "#0078D7" : "white"}
-                  />
-                </svg>
+                <Plane size={20} color={airplaneMode ? "#0078D7" : "white"} />
                 <div>{airplaneMode ? "Uçak Modu" : "Uçak Modu Kapalı"}</div>
-              </button>
-              <button
+              </div>
+
+              {/* Do Not Disturb */}
+              <div 
                 className={styles.actionButton}
                 onClick={() => setDoNotDisturb(!doNotDisturb)}
-                style={{ backgroundColor: doNotDisturb ? "rgba(255, 152, 0, 0.3)" : "rgba(255, 255, 255, 0.05)", border: `2px solid ${doNotDisturb ? "#FF9800" : "transparent"}` }}
+                style={{ 
+                  backgroundColor: doNotDisturb ? "rgba(255, 152, 0, 0.3)" : "rgba(255, 255, 255, 0.05)", 
+                  border: `2px solid ${doNotDisturb ? "#FF9800" : "transparent"}` 
+                }}
               >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z"
-                    fill={doNotDisturb ? "#FF9800" : "white"}
-                  />
-                </svg>
+                <Bell size={20} color={doNotDisturb ? "#FF9800" : "white"} />
                 <div>{doNotDisturb ? "Rahatsız Etme" : "Rahatsız Etme Kapalı"}</div>
-              </button>
+              </div>
             </div>
           </div>
         )}
