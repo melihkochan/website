@@ -11,6 +11,7 @@ export default function Desktop({
   openWindows,
   closeWindow,
   minimizeWindow,
+  minimizedWindows,
   activeWindow,
   setActiveWindow,
 }) {
