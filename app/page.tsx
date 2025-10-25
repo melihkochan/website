@@ -36,7 +36,7 @@ export default function Home() {
     setStartMenuOpen(!startMenuOpen)
   }
 
-  const openWindow = (app) => {
+  const openWindow = (app: any) => {
     if (minimizedWindows.includes(app.id)) {
       setMinimizedWindows(minimizedWindows.filter((id) => id !== app.id))
       setActiveWindow(app.id)
@@ -51,7 +51,7 @@ export default function Home() {
     }
   }
 
-  const closeWindow = (id) => {
+  const closeWindow = (id: string | null) => {
     setOpenWindows(openWindows.filter((window) => window.id !== id))
     setMinimizedWindows(minimizedWindows.filter((windowId) => windowId !== id))
 
@@ -61,14 +61,14 @@ export default function Home() {
     }
   }
 
-  const focusWindow = (id) => {
+  const focusWindow = (id: string | null) => {
     if (minimizedWindows.includes(id)) {
       setMinimizedWindows(minimizedWindows.filter((windowId) => windowId !== id))
     }
     setActiveWindow(id)
   }
 
-  const minimizeWindow = (id) => {
+  const minimizeWindow = (id: string | null) => {
     if (!minimizedWindows.includes(id)) {
       setMinimizedWindows([...minimizedWindows, id])
     }
