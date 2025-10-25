@@ -1,0 +1,127 @@
+.calculatorContainer {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.displayContainer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: right;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.display {
+  color: white;
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.buttonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  flex: 1;
+}
+
+.button {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.clearButton {
+  background: rgba(255, 100, 100, 0.3);
+}
+
+.clearButton:hover {
+  background: rgba(255, 100, 100, 0.5);
+}
+
+.functionButton {
+  background: rgba(200, 200, 200, 0.2);
+}
+
+.functionButton:hover {
+  background: rgba(200, 200, 200, 0.3);
+}
+
+.operatorButton {
+  background: rgba(255, 200, 50, 0.8);
+  color: white;
+}
+
+.operatorButton:hover {
+  background: rgba(255, 200, 50, 1);
+}
+
+.zeroButton {
+  grid-column: span 2;
+}
+
+.equalsButton {
+  background: rgba(100, 200, 100, 0.8);
+  color: white;
+}
+
+.equalsButton:hover {
+  background: rgba(100, 200, 100, 1);
+}

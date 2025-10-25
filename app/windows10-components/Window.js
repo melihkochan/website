@@ -19,6 +19,7 @@ import MailBrowser from "./MailBrowser"
 import FileExplorer from "./FileExplorer"
 import SpotifyPlayer from "./SpotifyPlayer"
 import Notepad from "./Notepad"
+import Calculator from "./Calculator"
 
 function getInitialWindowPosition(appId) {
   // Get window dimensions
@@ -232,6 +233,8 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
         return <SpotifyPlayer />
       case "notepad":
         return <Notepad />
+      case "calculator":
+        return <Calculator />
       default:
         return (
           <div className={styles.emptyContent}>

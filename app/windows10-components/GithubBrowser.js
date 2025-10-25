@@ -82,7 +82,7 @@ export default function GithubBrowser() {
             </div>
             <h2 className={styles.externalSiteTitle}>GitHub Profili</h2>
             <p className={styles.externalSiteDescription}>
-              Güvenlik kısıtlamaları nedeniyle GitHub bu pencerede görüntülenemez.
+              GitHub profilime erişmek için aşağıdaki linke tıklayın.
             </p>
             <a
               href="https://github.com/melihkochan"

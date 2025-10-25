@@ -73,7 +73,7 @@ export default function TwitterBrowser() {
             </div>
             <h2 className={styles.externalSiteTitle}>Twitter Profili</h2>
             <p className={styles.externalSiteDescription}>
-              Güvenlik kısıtlamaları nedeniyle Twitter bu pencerede görüntülenemez.
+              Twitter profilime erişmek için aşağıdaki linke tıklayın.
             </p>
             <a
               href="https://x.com/melihkochan1"

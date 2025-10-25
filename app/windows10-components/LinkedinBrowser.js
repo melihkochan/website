@@ -82,7 +82,7 @@ export default function LinkedinBrowser() {
             </div>
             <h2 className={styles.externalSiteTitle}>LinkedIn Profili</h2>
             <p className={styles.externalSiteDescription}>
-              Güvenlik kısıtlamaları nedeniyle LinkedIn bu pencerede görüntülenemez.
+              LinkedIn profilime erişmek için aşağıdaki linke tıklayın.
             </p>
             <a
               href="https://www.linkedin.com/in/melih-kochan-7961371a2/"

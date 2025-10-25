@@ -91,7 +91,7 @@ export default function InstagramBrowser() {
             </div>
             <h2 className={styles.externalSiteTitle}>Instagram Profili</h2>
             <p className={styles.externalSiteDescription}>
-              Güvenlik kısıtlamaları nedeniyle Instagram bu pencerede görüntülenemez.
+              Instagram profilime erişmek için aşağıdaki linke tıklayın.
             </p>
             <a
               href="https://www.instagram.com/melihkochan"
