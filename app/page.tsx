@@ -108,7 +108,7 @@ export default function Home() {
               />
               {startMenuOpen && (
                 <StartMenu
-                  openWindow={(app) => {
+                  openWindow={(app: { id: string; name: string; icon: React.ReactNode }) => {
                     openWindow(app)
                     setStartMenuOpen(false)
                   }}
