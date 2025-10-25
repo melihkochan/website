@@ -160,24 +160,7 @@ export default function Taskbar({
           {showTooltip === "Start" && <div className={styles.tooltip}>Start</div>}
         </div>
 
-        {!isSmallScreen && (
-          <div
-            className={styles.searchContainer}
-            onMouseEnter={() => {
-              setShowTooltip("Search")
-              setHoveredIcon("search")
-            }}
-            onMouseLeave={() => {
-              setShowTooltip(null)
-              setHoveredIcon(null)
-            }}
-            onClick={() => handleOpenApp("search")}
-          >
-            <Search size={14} className={styles.searchIcon} />
-            <span className={styles.searchText}>Type here to search</span>
-            {showTooltip === "Search" && <div className={styles.tooltip}>Search</div>}
-          </div>
-        )}
+
       </div>
 
       {/* Center: Taskbar icons */}
@@ -200,7 +183,7 @@ export default function Taskbar({
               backgroundColor: hoveredIcon === "file-explorer" ? "rgba(255, 255, 255, 0.1)" : "transparent",
             }}
           >
-            <Monitor size={20} color="#fff" />
+            <Monitor size={26} color="#fff" />
             {showTooltip === "File Explorer" && <div className={styles.tooltip}>File Explorer</div>}
           </div>
 
@@ -222,7 +205,7 @@ export default function Taskbar({
               backgroundColor: hoveredIcon === "edge" ? "rgba(255, 255, 255, 0.1)" : "transparent",
             }}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="12" cy="12" r="10" fill="#0078D7" />
               <path d="M12 4L4 8.5L12 13L20 8.5L12 4Z" fill="#fff" />
               <path d="M4 8.5V15.5L12 20L20 15.5V8.5" stroke="#fff" strokeWidth="1" />
@@ -248,7 +231,7 @@ export default function Taskbar({
               backgroundColor: hoveredIcon === "chrome" ? "rgba(255, 255, 255, 0.1)" : "transparent",
             }}
           >
-            <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="24" r="20" fill="#4285F4" />
               <circle cx="24" cy="24" r="8" fill="white" />
               <path d="M24 12L42 12" stroke="white" strokeWidth="8" strokeLinecap="round" />
@@ -277,7 +260,7 @@ export default function Taskbar({
               backgroundColor: hoveredIcon === "mail" ? "rgba(255, 255, 255, 0.1)" : "transparent",
             }}
           >
-            <Mail size={20} color="#fff" />
+            <Mail size={26} color="#fff" />
             {showTooltip === "Mail" && <div className={styles.tooltip}>Mail</div>}
           </div>
 

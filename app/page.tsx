@@ -7,21 +7,21 @@ import Taskbar from "./windows10-components/Taskbar"
 import StartMenu from "./windows10-components/StartMenu"
 import WindowsLogo from "./windows10-components/WindowsLogo"
 import LoginScreen from "./windows10-components/LoginScreen"
+import LockScreen from "./windows10-components/LockScreen"
 import styles from "./page.module.css"
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLockScreenVisible, setIsLockScreenVisible] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [startMenuOpen, setStartMenuOpen] = useState(false)
   const [openWindows, setOpenWindows] = useState<Array<{ id: string; name: string; icon: React.ReactNode }>>([])
   const [activeWindow, setActiveWindow] = useState<string | null>(null)
   const [minimizedWindows, setMinimizedWindows] = useState<string[]>([])
   const contentRef = useRef(null)
 
-  // Directly show desktop, no login screen or loader
-  useEffect(() => {
-    setIsLoggedIn(true)
-    localStorage.setItem("signin", "true")
-  }, [])
+  const handleUnlock = () => {
+    setIsLockScreenVisible(false)
+  }
 
   const handleLogin = () => {
     setIsLoggedIn(true)
@@ -30,6 +30,7 @@ export default function Home() {
 
   const handleLogout = () => {
     localStorage.removeItem("signin")
+    setIsLockScreenVisible(true)
     setIsLoggedIn(false)
   }
 
@@ -90,7 +91,9 @@ export default function Home() {
 
   return (
     <>
-      {isLoggedIn ? (
+      {isLockScreenVisible ? (
+        <LockScreen onUnlock={handleUnlock} />
+      ) : isLoggedIn ? (
         <main
           ref={contentRef}
           className={styles.main}
