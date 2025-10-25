@@ -12,9 +12,9 @@ import styles from "./page.module.css"
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [startMenuOpen, setStartMenuOpen] = useState(false)
-  const [openWindows, setOpenWindows] = useState([])
-  const [activeWindow, setActiveWindow] = useState(null)
-  const [minimizedWindows, setMinimizedWindows] = useState([])
+  const [openWindows, setOpenWindows] = useState<Array<{ id: string; name: string; icon: React.ReactNode }>>([])
+  const [activeWindow, setActiveWindow] = useState<string | null>(null)
+  const [minimizedWindows, setMinimizedWindows] = useState<string[]>([])
   const contentRef = useRef(null)
 
   // Directly show desktop, no login screen or loader
