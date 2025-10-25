@@ -1,0 +1,297 @@
+.folderContainer {
+  padding: 20px;
+  height: 100%;
+  overflow-y: auto;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.folderTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #0078d7;
+  border-bottom: 2px solid #0078d7;
+  padding-bottom: 10px;
+}
+
+/* Projects Folder Styles */
+.projectItem {
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #0078d7;
+}
+
+.projectItem h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0078d7;
+}
+
+.projectLinks {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.projectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #0078d7;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: rgba(0, 120, 215, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.projectLink:hover {
+  background-color: rgba(0, 120, 215, 0.2);
+  text-decoration: underline;
+}
+
+.projectItem ul {
+  padding-left: 20px;
+}
+
+.projectItem li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* Personal Info Folder Styles */
+.infoCard {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.infoRow {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.infoLabel {
+  font-weight: 600;
+  width: 150px;
+  color: #555;
+}
+
+.infoValue {
+  flex: 1;
+}
+
+/* Contact Folder Styles */
+.contactCard {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.contactIcon {
+  color: #0078d7;
+  margin-right: 15px;
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactLabel {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.contactValue {
+  color: #0078d7;
+  text-decoration: none;
+}
+
+.contactValue:hover {
+  text-decoration: underline;
+}
+
+/* Skills Folder Styles */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.skillCategory {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skillCategory h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0078d7;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.skillList {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.skillList li {
+  margin-bottom: 8px;
+}
+
+/* Education Folder Styles */
+.educationItem {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.educationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.educationHeader h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0078d7;
+  margin: 0;
+}
+
+.educationYear {
+  font-size: 14px;
+  color: #666;
+}
+
+.educationInstitution {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Certifications Folder Styles */
+.certificationsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.certificationItem {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.certificationItem h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #0078d7;
+}
+
+.certificationIssuer {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.certificationDate {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Additional Info Folder Styles */
+.additionalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoSection {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.infoSection h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #0078d7;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.workExperience h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.workDuration {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.workDescription {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.workResponsibilities {
+  padding-left: 20px;
+}
+
+.workResponsibilities li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.languageList,
+.interestsList {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.languageList li,
+.interestsList li {
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .skillsGrid,
+  .certificationsList {
+    grid-template-columns: 1fr;
+  }
+
+  .educationHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

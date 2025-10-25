@@ -1,0 +1,260 @@
+.browser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+  contain: content;
+}
+
+.toolbar {
+  background-color: #dee1e6;
+  padding: 8px 8px 0;
+  user-select: none;
+  position: relative;
+  z-index: 3;
+}
+
+.tabBar {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 10px;
+  min-width: 200px;
+  max-width: 240px;
+  height: 32px;
+  margin-right: 1px;
+  transition: background-color 0.2s ease;
+}
+
+.tab:hover {
+  background-color: #f1f3f4;
+}
+
+.favicon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabTitle {
+  flex: 1;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.closeTab {
+  opacity: 0.6;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.closeTab:hover {
+  opacity: 1;
+  background-color: #e8eaed;
+  border-radius: 50%;
+}
+
+.addressBar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 8px;
+  gap: 8px;
+  position: relative;
+  z-index: 3;
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.navButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #f1f3f4;
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.urlBar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f4;
+  border-radius: 20px;
+  padding: 0 12px;
+  height: 36px;
+}
+
+.urlIcon {
+  color: #5f6368;
+  margin-right: 8px;
+}
+
+.urlText {
+  flex: 1;
+  font-size: 14px;
+  color: #202124;
+}
+
+.browserActions {
+  display: flex;
+  gap: 4px;
+}
+
+.actionButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #f1f3f4;
+}
+
+.browserContent {
+  flex: 1;
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.loadingIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 10;
+}
+
+.loadingBar {
+  height: 100%;
+  background-color: #4285f4;
+}
+
+.iframeWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  contain: strict;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.iframeActive .iframe {
+  pointer-events: auto;
+}
+
+.iframeOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.iframeActive .iframeOverlay {
+  display: none;
+}
+
+.externalSitePrompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.externalSiteIcon {
+  margin-bottom: 20px;
+}
+
+.externalSiteTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.externalSiteDescription {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+  max-width: 400px;
+}
+
+.externalSiteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.externalSiteButton:hover {
+  background-color: #0063b1;
+}
+
+.externalLinkIcon {
+  margin-right: 4px;
+}

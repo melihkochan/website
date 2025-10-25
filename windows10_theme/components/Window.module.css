@@ -1,0 +1,103 @@
+.window {
+  position: absolute;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 100;
+  outline: none;
+  user-select: none;
+  transition: width 0.2s ease, height 0.2s ease;
+  contain: layout style;
+}
+
+.browserWindow {
+  z-index: 101; /* Keep higher z-index if needed */
+}
+
+.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100%; /* Account for taskbar */
+  border-radius: 0;
+}
+
+.active {
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.5);
+}
+
+.titleBar {
+  height: 32px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: move;
+  user-select: none;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.active .titleBar {
+  background-color: #dfdfdf;
+}
+
+.titleBarLeft {
+  display: flex;
+  align-items: center;
+}
+
+.appIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.title {
+  font-size: 12px;
+}
+
+.titleBarControls {
+  display: flex;
+}
+
+.control {
+  width: 46px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: white;
+}
+
+.windowContent {
+  flex: 1;
+  position: relative;
+  z-index: 5;
+  height: calc(100% - 32px); /* Account for titleBar */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Let child components handle scrolling */
+}
+
+.emptyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666;
+  padding: 20px;
+}

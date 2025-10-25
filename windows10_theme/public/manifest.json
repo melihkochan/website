@@ -1,0 +1,24 @@
+{
+  "name": "Windows 10 UI Clone - Interactive Portfolio",
+  "short_name": "Win10 Portfolio",
+  "description": "An interactive portfolio website designed as a Windows 10 desktop clone",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0078d7",
+  "theme_color": "#0078d7",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

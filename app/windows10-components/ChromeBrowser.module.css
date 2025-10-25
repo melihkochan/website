@@ -1,0 +1,286 @@
+.browser {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.toolbar {
+  background-color: #dee1e6;
+  padding: 8px 8px 0;
+  user-select: none;
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+.tabBar {
+  display: flex;
+  align-items: center;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 10px;
+  min-width: 200px;
+  max-width: 240px;
+  height: 32px;
+  margin-right: 1px;
+  transition: background-color 0.2s ease;
+}
+
+.tab:hover {
+  background-color: #f1f3f4;
+}
+
+.favicon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tabTitle {
+  flex: 1;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.closeTab {
+  opacity: 0.6;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.closeTab:hover {
+  opacity: 1;
+  background-color: #e8eaed;
+  border-radius: 50%;
+}
+
+.newTab {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  margin-left: 4px;
+}
+
+.newTab:hover {
+  background-color: #e8eaed;
+}
+
+.addressBar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 8px;
+  gap: 8px;
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 4px;
+}
+
+.navButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #f1f3f4;
+}
+
+.navButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.urlForm {
+  flex: 1;
+}
+
+.urlBar {
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f4;
+  border-radius: 20px;
+  padding: 0 12px;
+  height: 36px;
+}
+
+.searchIcon {
+  color: #5f6368;
+  margin-right: 8px;
+}
+
+.urlInput {
+  flex: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 14px;
+  color: #202124;
+}
+
+.browserActions {
+  display: flex;
+  gap: 4px;
+}
+
+.actionButton {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #f1f3f4;
+}
+
+.browserContent {
+  flex: 1;
+  position: relative;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 10;
+}
+
+.loadingBar {
+  height: 100%;
+  background-color: #4285f4;
+}
+
+.iframeWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Add scrollbar styling */
+.iframe::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.iframe::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.iframe::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.iframe::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Add these media queries at the bottom of the file to fix mobile display issues */
+
+@media (max-width: 768px) {
+  .browser {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .addressBar {
+    padding: 6px;
+    gap: 4px;
+  }
+
+  .urlBar {
+    height: 32px;
+    padding: 0 8px;
+  }
+
+  .urlInput {
+    font-size: 12px;
+  }
+
+  .navigationButtons {
+    gap: 2px;
+  }
+
+  .navButton {
+    width: 24px;
+    height: 24px;
+  }
+
+  .actionButton {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Add specific fixes for very small screens */
+@media (max-width: 480px) {
+  /* Fix for bottom tabbar visibility on mobile */
+  .browserContent {
+    height: calc(100% - 80px); /* Adjust height to ensure tabbar is visible */
+    max-height: calc(100dvh - 160px); /* Prevent overflow on very small screens */
+  }
+
+  /* Ensure the iframe doesn't overflow */
+  .iframeWrapper {
+    height: 100%;
+    max-height: 100%;
+  }
+
+  /* Make sure the browser fits within the window on mobile */
+  .browser {
+    max-height: 100%;
+    overflow: hidden;
+  }
+}

@@ -1,9 +1,138 @@
-import { SplineSceneBasic } from "./components/SplineSceneBasic";
+"use client"
+
+import { useState, useEffect, useRef } from "react"
+import Desktop from "./windows10-components/Desktop"
+import Taskbar from "./windows10-components/Taskbar"
+import StartMenu from "./windows10-components/StartMenu"
+import WindowsLogo from "./windows10-components/WindowsLogo"
+import LoginScreen from "./windows10-components/LoginScreen"
+import Loader from "./windows10-components/Loader"
+import styles from "./page.module.css"
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [startMenuOpen, setStartMenuOpen] = useState(false)
+  const [openWindows, setOpenWindows] = useState([])
+  const [activeWindow, setActiveWindow] = useState(null)
+  const [minimizedWindows, setMinimizedWindows] = useState([])
+  const [loaderVisible, setLoaderVisible] = useState(false)
+  const [loaderFading, setLoaderFading] = useState(false)
+  const contentRef = useRef(null)
+
+  // Directly show desktop, no login screen or loader
+  useEffect(() => {
+    setIsLoggedIn(true)
+    localStorage.setItem("signin", "true")
+  }, [])
+
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+    localStorage.setItem("signin", "true")
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("signin")
+    setIsLoggedIn(false)
+  }
+
+  const toggleStartMenu = () => {
+    setStartMenuOpen(!startMenuOpen)
+  }
+
+  const openWindow = (app) => {
+    if (minimizedWindows.includes(app.id)) {
+      setMinimizedWindows(minimizedWindows.filter((id) => id !== app.id))
+      setActiveWindow(app.id)
+      return
+    }
+
+    if (!openWindows.find((window) => window.id === app.id)) {
+      setOpenWindows([...openWindows, app])
+      setActiveWindow(app.id)
+    } else {
+      focusWindow(app.id)
+    }
+  }
+
+  const closeWindow = (id) => {
+    setOpenWindows(openWindows.filter((window) => window.id !== id))
+    setMinimizedWindows(minimizedWindows.filter((windowId) => windowId !== id))
+
+    if (activeWindow === id) {
+      const remainingWindows = openWindows.filter((window) => window.id !== id && !minimizedWindows.includes(window.id))
+      setActiveWindow(remainingWindows.length > 0 ? remainingWindows[remainingWindows.length - 1].id : null)
+    }
+  }
+
+  const focusWindow = (id) => {
+    if (minimizedWindows.includes(id)) {
+      setMinimizedWindows(minimizedWindows.filter((windowId) => windowId !== id))
+    }
+    setActiveWindow(id)
+  }
+
+  const minimizeWindow = (id) => {
+    if (!minimizedWindows.includes(id)) {
+      setMinimizedWindows([...minimizedWindows, id])
+    }
+
+    if (activeWindow === id) {
+      const remainingWindows = openWindows.filter((window) => window.id !== id && !minimizedWindows.includes(window.id))
+      setActiveWindow(remainingWindows.length > 0 ? remainingWindows[remainingWindows.length - 1].id : null)
+    }
+  }
+
+  const handleDesktopClick = () => {
+    if (startMenuOpen) {
+      setStartMenuOpen(false)
+    }
+  }
+
   return (
-    <main className="w-full h-screen min-h-screen bg-black">
-      <SplineSceneBasic />
-    </main>
-  );
+    <>
+      {isLoggedIn ? (
+        <main
+          ref={contentRef}
+          className={styles.main}
+          onClick={handleDesktopClick}
+          style={{
+            filter: loaderVisible ? "blur(5px)" : "none",
+            transition: "filter 0.5s ease-out",
+          }}
+        >
+          <>
+            <WindowsLogo />
+            <Desktop
+                openWindow={openWindow}
+                openWindows={openWindows}
+                closeWindow={closeWindow}
+                activeWindow={activeWindow}
+                setActiveWindow={setActiveWindow}
+                minimizeWindow={minimizeWindow}
+                minimizedWindows={minimizedWindows}
+              />
+              {startMenuOpen && (
+                <StartMenu
+                  openWindow={(app) => {
+                    openWindow(app)
+                    setStartMenuOpen(false)
+                  }}
+                  onLogout={handleLogout}
+                />
+              )}
+              <Taskbar
+                toggleStartMenu={toggleStartMenu}
+                startMenuOpen={startMenuOpen}
+                openWindows={openWindows}
+                openWindow={openWindow}
+                focusWindow={focusWindow}
+                minimizedWindows={minimizedWindows}
+              />
+          </>
+        </main>
+      ) : (
+        <LoginScreen onLogin={handleLogin} />
+      )}
+    </>
+  )
 }

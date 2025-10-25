@@ -1,0 +1,150 @@
+.experienceContainer {
+  padding: 30px;
+  height: 100%;
+  overflow-y: auto;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.resumeHeader {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #0078d7;
+  padding-bottom: 20px;
+}
+
+.resumeHeader h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #0078d7;
+}
+
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  font-size: 14px;
+}
+
+.contactInfo p {
+  margin: 0;
+}
+
+.contactInfo a {
+  color: #0078d7;
+  text-decoration: none;
+}
+
+.contactInfo a:hover {
+  text-decoration: underline;
+}
+
+.resumeSection {
+  margin-bottom: 25px;
+}
+
+.resumeSection h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #0078d7;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 5px;
+}
+
+.experienceItem,
+.projectItem,
+.educationItem {
+  margin-bottom: 20px;
+}
+
+.jobHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.jobHeader h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.date {
+  font-size: 14px;
+  color: #666;
+}
+
+.experienceItem p,
+.projectItem p {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.experienceItem ul,
+.projectItem ul,
+.skillsList {
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.experienceItem li,
+.projectItem li,
+.skillsList li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.projectItem {
+  padding-left: 10px;
+  border-left: 3px solid #0078d7;
+  margin-bottom: 20px;
+}
+
+.projectItem h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.projectLink {
+  color: #0078d7;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 14px;
+  background-color: rgba(0, 120, 215, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.projectLink:hover {
+  background-color: rgba(0, 120, 215, 0.2);
+  text-decoration: underline;
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .experienceContainer {
+    padding: 15px;
+  }
+
+  .jobHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .skillsList {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,207 @@
+.taskbar {
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  user-select: none;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.startButton {
+  width: 48px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.active {
+  background-color: #0078d7;
+}
+
+.windowsLogo {
+  width: 16px;
+  height: 16px;
+}
+
+.searchContainer {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  margin-left: 5px;
+  padding: 0 10px;
+  width: 215px;
+  cursor: pointer;
+  position: relative;
+}
+
+.searchIcon {
+  margin-right: 8px;
+  color: #fff;
+}
+
+.searchText {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.taskbarIcons {
+  display: flex;
+  height: 100%;
+}
+
+.taskbarIcon {
+  width: 48px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.activeApp {
+  border-bottom: 2px solid #0078d7;
+}
+
+.minimizedApp {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.appIconSmall {
+  transform: scale(0.8);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.systemTray {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.trayIcon {
+  width: 24px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.dateTime {
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.time {
+  font-weight: normal;
+}
+
+.date {
+  font-size: 10px;
+}
+
+.showDesktop {
+  width: 5px;
+  height: 100%;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1001;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .searchContainer {
+    display: none;
+  }
+
+  .dateTime {
+    padding: 0 5px;
+  }
+
+  .date {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskbar {
+    height: 36px; /* Slightly smaller taskbar on very small screens */
+  }
+
+  .startButton {
+    width: 40px;
+  }
+
+  .taskbarIcon {
+    width: 36px;
+  }
+
+  /* Ensure the taskbar is always visible at the bottom of the screen */
+  .taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100; /* Higher z-index to ensure it's above other elements */
+  }
+
+  /* Hide less important elements on very small screens */
+  .systemTray {
+    display: none;
+  }
+
+  .dateTime {
+    padding: 0 5px;
+  }
+
+  /* Ensure the date is hidden on small screens */
+  .date {
+    display: none;
+  }
+}
