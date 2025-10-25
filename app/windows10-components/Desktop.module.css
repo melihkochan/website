@@ -8,12 +8,11 @@
 }
 
 .iconGrid {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   padding: 20px;
-  align-items: flex-start;
+  max-width: 500px;
   position: absolute;
   z-index: 1;
 }

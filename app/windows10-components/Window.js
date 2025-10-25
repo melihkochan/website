@@ -10,8 +10,6 @@ import PersonalInfoFolder from "./PersonalInfoFolder"
 import ContactFolder from "./ContactFolder"
 import SkillsFolder from "./SkillsFolder"
 import EducationFolder from "./EducationFolder"
-import CertificationsFolder from "./CertificationsFolder"
-import AdditionalInfoFolder from "./AdditionalInfoFolder"
 import GithubBrowser from "./GithubBrowser"
 import LinkedinBrowser from "./LinkedinBrowser"
 import InstagramBrowser from "./InstagramBrowser"
@@ -57,7 +55,7 @@ function getInitialWindowPosition(appId) {
 
     // Adjust size for folder windows
     if (
-      ["projects", "personal-info", "contact", "skills", "education", "certifications", "additional-info"].includes(
+      ["projects", "personal-info", "contact", "skills", "education"].includes(
         appId,
       )
     ) {
@@ -204,10 +202,6 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
         return <SkillsFolder />
       case "education":
         return <EducationFolder />
-      case "certifications":
-        return <CertificationsFolder />
-      case "additional-info":
-        return <AdditionalInfoFolder />
       case "github":
         return <GithubBrowser />
       case "linkedin":

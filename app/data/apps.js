@@ -13,10 +13,17 @@ import {
   Linkedin,
   Instagram,
   FileText,
+  Twitter,
+  Youtube,
 } from "lucide-react"
 
 // Desktop apps - all icons visible
 export const desktopApps = [
+  {
+    id: "file-explorer",
+    name: "Dosya Gezgini",
+    icon: <Folder size={32} color="#0078d7" />,
+  },
   {
     id: "projects",
     name: "Projeler",
@@ -31,6 +38,21 @@ export const desktopApps = [
     id: "linkedin",
     name: "LinkedIn",
     icon: <Linkedin size={32} color="#0A66C2" />,
+  },
+  {
+    id: "instagram",
+    name: "Instagram",
+    icon: <Instagram size={32} color="#E4405F" />,
+  },
+  {
+    id: "twitter",
+    name: "Twitter",
+    icon: <Twitter size={32} color="#1DA1F2" />,
+  },
+  {
+    id: "youtube",
+    name: "YouTube",
+    icon: <Youtube size={32} color="#FF0000" />,
   },
   {
     id: "chrome",
@@ -78,16 +100,6 @@ const portfolioApps = [
     id: "education",
     name: "Eğitim",
     icon: <GraduationCap size={24} color="#0078d7" />,
-  },
-  {
-    id: "certifications",
-    name: "Sertifikalar",
-    icon: <Award size={24} color="#0078d7" />,
-  },
-  {
-    id: "additional-info",
-    name: "Ek Bilgiler",
-    icon: <Info size={24} color="#0078d7" />,
   },
   {
     id: "instagram",

@@ -6,6 +6,7 @@ import styles from "./DesktopIcon.module.css"
 export default function DesktopIcon({ app, isSelected, onClick, onDoubleClick }) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 })
   const iconRef = useRef(null)
 
   // Handle context menu closing
@@ -59,6 +60,11 @@ export default function DesktopIcon({ app, isSelected, onClick, onDoubleClick })
         console.log('Right click on icon')
         e.preventDefault()
         e.stopPropagation()
+        // Set position using mouse coordinates
+        setContextMenuPosition({
+          x: e.clientX,
+          y: e.clientY
+        })
         setIsContextMenuOpen(true)
       }}
     >
@@ -74,6 +80,10 @@ export default function DesktopIcon({ app, isSelected, onClick, onDoubleClick })
       {isContextMenuOpen && (
         <div 
           className={styles.contextMenu}
+          style={{
+            left: contextMenuPosition.x,
+            top: contextMenuPosition.y,
+          }}
           onClick={(e) => e.stopPropagation()}
         >
           <div className={styles.contextMenuItem} onClick={handleRefresh}>

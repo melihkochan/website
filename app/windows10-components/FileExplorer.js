@@ -8,11 +8,11 @@ export default function FileExplorer({ openWindow }) {
 
   const handleItemClick = (itemType, itemName) => {
     if (itemType === "folder") {
-      if (itemName === "Projects") {
+      if (itemName === "Projeler") {
         // Open the Projects window
         const projectsApp = {
           id: "projects",
-          name: "Projects",
+          name: "Projeler",
           icon: <Folder size={16} color="#0078d7" />,
         }
         openWindow(projectsApp)
@@ -20,11 +20,11 @@ export default function FileExplorer({ openWindow }) {
         // Update the current path when clicking on a folder
         setCurrentPath(itemName)
       }
-    } else if (itemType === "file" && itemName === "Resume.pdf") {
+    } else if (itemType === "file" && itemName === "Özgeçmiş.pdf") {
       // Open the resume PDF viewer
       const resumeApp = {
         id: "resume-pdf",
-        name: "Resume.pdf",
+        name: "Özgeçmiş.pdf",
         icon: <File size={16} color="#0078d7" />,
       }
       openWindow(resumeApp)
@@ -35,84 +35,84 @@ export default function FileExplorer({ openWindow }) {
     <div className={styles.fileExplorer}>
       <div className={styles.toolbar}>
         <div className={styles.toolbarButtons}>
-          <button className={styles.toolbarButton}>File</button>
-          <button className={styles.toolbarButton}>Home</button>
-          <button className={styles.toolbarButton}>Share</button>
-          <button className={styles.toolbarButton}>View</button>
+          <button className={styles.toolbarButton}>Dosya</button>
+          <button className={styles.toolbarButton}>Giriş</button>
+          <button className={styles.toolbarButton}>Paylaş</button>
+          <button className={styles.toolbarButton}>Görünüm</button>
         </div>
         <div className={styles.searchContainer}>
-          <input type="text" placeholder="Search" className={styles.searchInput} />
+          <input type="text" placeholder="Ara" className={styles.searchInput} />
         </div>
       </div>
 
       <div className={styles.explorerContent}>
         <div className={styles.sidebar}>
           <div className={styles.sidebarSection}>
-            <div className={styles.sidebarHeader}>Quick access</div>
+            <div className={styles.sidebarHeader}>Hızlı Erişim</div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("Desktop")}>
               <Desktop size={16} className={styles.sidebarIcon} />
-              <span>Desktop</span>
+              <span>Masaüstü</span>
             </div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("Downloads")}>
               <Download size={16} className={styles.sidebarIcon} />
-              <span>Downloads</span>
+              <span>İndirilenler</span>
             </div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("Documents")}>
               <Users size={16} className={styles.sidebarIcon} />
-              <span>Documents</span>
+              <span>Belgeler</span>
             </div>
           </div>
 
           <div className={styles.sidebarSection}>
-            <div className={styles.sidebarHeader}>This PC</div>
+            <div className={styles.sidebarHeader}>Bilgisayar</div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("Desktop")}>
               <Desktop size={16} className={styles.sidebarIcon} />
-              <span>Desktop</span>
+              <span>Masaüstü</span>
             </div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("Documents")}>
               <Users size={16} className={styles.sidebarIcon} />
-              <span>Documents</span>
+              <span>Belgeler</span>
             </div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("Downloads")}>
               <Download size={16} className={styles.sidebarIcon} />
-              <span>Downloads</span>
+              <span>İndirilenler</span>
             </div>
             <div className={styles.sidebarItem} onClick={() => setCurrentPath("C:")}>
               <HardDrive size={16} className={styles.sidebarIcon} />
-              <span>Local Disk (C:)</span>
+              <span>Yerel Disk (C:)</span>
             </div>
           </div>
         </div>
 
         <div className={styles.fileList}>
           <div className={styles.breadcrumb}>
-            <span>This PC</span>
+            <span>Bilgisayar</span>
             <ChevronRight size={14} />
-            <span>{currentPath}</span>
+            <span>{currentPath === "Documents" ? "Belgeler" : currentPath === "Desktop" ? "Masaüstü" : currentPath === "Downloads" ? "İndirilenler" : currentPath === "Projects" ? "Projeler" : currentPath === "Resume" ? "Özgeçmiş" : currentPath === "Certificates" ? "Sertifikalar" : currentPath === "Personal" ? "Kişisel" : currentPath === "C:" ? "Yerel Disk (C:)" : currentPath}</span>
           </div>
 
           <div className={styles.files}>
             {currentPath === "Documents" && (
               <>
-                <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Projects")}>
+                <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Projeler")}>
                   <Folder size={40} color="#ffd700" />
-                  <span>Projects</span>
+                  <span>Projeler</span>
                 </div>
                 <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Resume")}>
                   <Folder size={40} color="#ffd700" />
-                  <span>Resume</span>
+                  <span>Özgeçmiş</span>
                 </div>
-                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Resume.pdf")}>
+                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Özgeçmiş.pdf")}>
                   <File size={40} color="#0078d7" />
-                  <span>Resume.pdf</span>
+                  <span>Özgeçmiş.pdf</span>
                 </div>
                 <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Certificates")}>
                   <Folder size={40} color="#ffd700" />
-                  <span>Certificates</span>
+                  <span>Sertifikalar</span>
                 </div>
                 <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Personal")}>
                   <Folder size={40} color="#ffd700" />
-                  <span>Personal</span>
+                  <span>Kişisel</span>
                 </div>
               </>
             )}
@@ -144,13 +144,13 @@ export default function FileExplorer({ openWindow }) {
 
             {currentPath === "Resume" && (
               <>
-                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Resume.pdf")}>
+                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Özgeçmiş.pdf")}>
                   <File size={40} color="#0078d7" />
-                  <span>Resume.pdf</span>
+                  <span>Özgeçmiş.pdf</span>
                 </div>
                 <div className={styles.fileItem} onClick={() => handleItemClick("file", "Cover Letter.docx")}>
                   <File size={40} color="#2b579a" />
-                  <span>Cover Letter.docx</span>
+                  <span>Kapak Mektubu.docx</span>
                 </div>
               </>
             )}
@@ -159,7 +159,7 @@ export default function FileExplorer({ openWindow }) {
               <>
                 <div className={styles.fileItem}>
                   <File size={40} color="#0078d7" />
-                  <span>Web Development.pdf</span>
+                  <span>Web Geliştirme.pdf</span>
                 </div>
                 <div className={styles.fileItem}>
                   <File size={40} color="#0078d7" />
@@ -174,26 +174,26 @@ export default function FileExplorer({ openWindow }) {
 
             {currentPath === "Desktop" && (
               <>
-                <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Projects")}>
+                <div className={styles.fileItem} onClick={() => handleItemClick("folder", "Projeler")}>
                   <Folder size={40} color="#ffd700" />
-                  <span>Projects</span>
+                  <span>Projeler</span>
                 </div>
-                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Resume.pdf")}>
+                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Özgeçmiş.pdf")}>
                   <File size={40} color="#0078d7" />
-                  <span>Resume.pdf</span>
+                  <span>Özgeçmiş.pdf</span>
                 </div>
               </>
             )}
 
             {currentPath === "Downloads" && (
               <>
-                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Resume.pdf")}>
+                <div className={styles.fileItem} onClick={() => handleItemClick("file", "Özgeçmiş.pdf")}>
                   <File size={40} color="#0078d7" />
-                  <span>Resume.pdf</span>
+                  <span>Özgeçmiş.pdf</span>
                 </div>
                 <div className={styles.fileItem}>
                   <File size={40} color="#0078d7" />
-                  <span>Project Documentation.pdf</span>
+                  <span>Proje Dokümantasyonu.pdf</span>
                 </div>
               </>
             )}
@@ -206,7 +206,7 @@ export default function FileExplorer({ openWindow }) {
                 </div>
                 <div className={styles.fileItem}>
                   <Folder size={40} color="#ffd700" />
-                  <span>Users</span>
+                  <span>Kullanıcılar</span>
                 </div>
                 <div className={styles.fileItem}>
                   <Folder size={40} color="#ffd700" />
@@ -221,20 +221,20 @@ export default function FileExplorer({ openWindow }) {
       <div className={styles.statusBar}>
         <div className={styles.statusItem}>
           {currentPath === "Documents"
-            ? "5 items"
+            ? "5 öğe"
             : currentPath === "Projects"
-              ? "5 items"
+              ? "5 öğe"
               : currentPath === "Resume"
-                ? "2 items"
+                ? "2 öğe"
                 : currentPath === "Certificates"
-                  ? "3 items"
+                  ? "3 öğe"
                   : currentPath === "Desktop"
-                    ? "2 items"
+                    ? "2 öğe"
                     : currentPath === "Downloads"
-                      ? "2 items"
+                      ? "2 öğe"
                       : currentPath === "C:"
-                        ? "3 items"
-                        : "0 items"}
+                        ? "3 öğe"
+                        : "0 öğe"}
         </div>
       </div>
     </div>
