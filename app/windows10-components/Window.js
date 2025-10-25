@@ -304,7 +304,7 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
           dragOffset.current = { x: info.offset.x, y: info.offset.y }
         }
       }}
-      onDragEnd={(event, info) => {
+      onDragEnd={() => {
         if (!isMaximized) {
           const windowWidth = typeof window !== "undefined" ? window.innerWidth : 1000
           const windowHeight = typeof window !== "undefined" ? window.innerHeight : 800
@@ -320,7 +320,6 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
           setWindowPosition({ left: newLeft, top: newTop })
           dragOffset.current = { x: 0, y: 0 }
         }
-        return null
       }}
     >
       <div
