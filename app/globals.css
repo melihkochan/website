@@ -62,19 +62,29 @@ textarea {
 @media (max-width: 768px) {
   html, body {
     overflow-x: hidden;
-    overflow-y: auto;
-    min-height: 100vh;
-    height: auto;
+    overflow-y: hidden;
+    height: 100vh;
+    max-height: 100vh;
+    position: fixed;
+    width: 100%;
   }
 
   #__next {
-    height: auto;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
   }
 }
 
 @media (max-width: 480px) {
   html, body {
     font-size: 14px;
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  #__next {
+    height: 100vh;
+    max-height: 100vh;
   }
 }

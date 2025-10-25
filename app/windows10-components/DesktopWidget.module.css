@@ -1,9 +1,22 @@
 .widgetContainer {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
-  z-index: 10;
+  z-index: 2;
   pointer-events: auto;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .widgetContainer {
+    display: none; /* Hide widget on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .widgetContainer {
+    display: none; /* Hide widget on small mobile */
+  }
 }
 
 .widget {
