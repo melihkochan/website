@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
+import React from "react"
 import Desktop from "./windows10-components/Desktop"
 import Taskbar from "./windows10-components/Taskbar"
 import StartMenu from "./windows10-components/StartMenu"
@@ -36,7 +37,7 @@ export default function Home() {
     setStartMenuOpen(!startMenuOpen)
   }
 
-  const openWindow = (app: any) => {
+  const openWindow = (app: { id: string; name: string; icon: React.ReactNode }) => {
     if (minimizedWindows.includes(app.id)) {
       setMinimizedWindows(minimizedWindows.filter((id) => id !== app.id))
       setActiveWindow(app.id)
