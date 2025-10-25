@@ -1,0 +1,117 @@
+.lockScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 60px;
+  cursor: pointer;
+  z-index: 10000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+}
+
+.lockScreenContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.time {
+  font-size: 120px;
+  font-weight: 200;
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+}
+
+.date {
+  font-size: 32px;
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+.lockScreenHint {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.lockIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.hintText {
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .time {
+    font-size: 72px;
+  }
+
+  .date {
+    font-size: 20px;
+  }
+
+  .lockIcon {
+    font-size: 36px;
+  }
+
+  .hintText {
+    font-size: 14px;
+  }
+}
