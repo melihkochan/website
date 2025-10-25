@@ -11,20 +11,22 @@ export default function Taskbar({
   openWindow,
   focusWindow,
   minimizedWindows,
+  showQuickSettings,
+  setShowQuickSettings,
+  showCalendar,
+  setShowCalendar,
 }) {
   const currentTime = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
   const currentDate = new Date().toLocaleDateString()
   const [showTooltip, setShowTooltip] = useState(null)
   const [hoveredIcon, setHoveredIcon] = useState(null)
   const [isSmallScreen, setIsSmallScreen] = useState(false)
-  const [showQuickSettings, setShowQuickSettings] = useState(false)
   const [wifiEnabled, setWifiEnabled] = useState(true)
   const [volume, setVolume] = useState(39)
   const [brightness, setBrightness] = useState(100)
   const [bluetoothEnabled, setBluetoothEnabled] = useState(false)
   const [airplaneMode, setAirplaneMode] = useState(false)
   const [doNotDisturb, setDoNotDisturb] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
 
   // Check screen size on mount and resize
   useEffect(() => {
@@ -142,13 +144,7 @@ export default function Taskbar({
 
   return (
     <>
-      <div className={styles.taskbar} onClick={(e) => {
-        e.stopPropagation()
-        if (e.target === e.currentTarget) {
-          setShowQuickSettings(false)
-          setShowCalendar(false)
-        }
-      }}>
+      <div className={styles.taskbar}>
       {/* Left side: Start button and search */}
       <div className={styles.left}>
         <div
@@ -268,7 +264,20 @@ export default function Taskbar({
         </div>
 
         {showQuickSettings && (
-          <div className={styles.quickSettings} onClick={(e) => e.stopPropagation()}>
+          <>
+            <div 
+              className={styles.overlay}
+              onClick={() => setShowQuickSettings(false)}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1,
+              }}
+            ></div>
+            <div className={styles.quickSettings} onClick={(e) => e.stopPropagation()}>
             <div className={styles.quickSettingsGrid}>
               {/* Wi-Fi Tile */}
               <div 
@@ -401,6 +410,7 @@ export default function Taskbar({
               </div>
             </div>
           </div>
+          </>
         )}
 
         <div
@@ -425,7 +435,20 @@ export default function Taskbar({
         </div>
 
         {showCalendar && (
-          <div className={styles.calendar} onClick={(e) => e.stopPropagation()}>
+          <>
+            <div 
+              className={styles.overlay}
+              onClick={() => setShowCalendar(false)}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                zIndex: 1,
+              }}
+            ></div>
+            <div className={styles.calendar} onClick={(e) => e.stopPropagation()}>
             <div className={styles.calendarHeader}>
               <div className={styles.calendarTitle}>{getCurrentDateInfo().day} {getCurrentDateInfo().month} {getCurrentDateInfo().dayName}</div>
             </div>
@@ -447,6 +470,7 @@ export default function Taskbar({
               ))}
             </div>
           </div>
+          </>
         )}
 
         <div

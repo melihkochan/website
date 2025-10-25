@@ -87,9 +87,18 @@ export default function Home() {
     }
   }
 
+  const [showQuickSettings, setShowQuickSettings] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
+
   const handleDesktopClick = () => {
     if (startMenuOpen) {
       setStartMenuOpen(false)
+    }
+    if (showQuickSettings) {
+      setShowQuickSettings(false)
+    }
+    if (showCalendar) {
+      setShowCalendar(false)
     }
   }
 
@@ -129,6 +138,10 @@ export default function Home() {
                 openWindow={openWindow}
                 focusWindow={focusWindow}
                 minimizedWindows={minimizedWindows}
+                showQuickSettings={showQuickSettings}
+                setShowQuickSettings={setShowQuickSettings}
+                showCalendar={showCalendar}
+                setShowCalendar={setShowCalendar}
               />
           </>
         </main>
