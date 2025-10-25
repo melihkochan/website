@@ -105,7 +105,6 @@ export default function Home() {
                 activeWindow={activeWindow}
                 setActiveWindow={setActiveWindow}
                 minimizeWindow={minimizeWindow}
-                minimizedWindows={minimizedWindows}
               />
               {startMenuOpen && (
                 <StartMenu
