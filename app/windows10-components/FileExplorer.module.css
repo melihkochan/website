@@ -114,10 +114,10 @@
 
 .files {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 15px;
-  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px;
   overflow-y: auto;
 }
 
@@ -129,6 +129,7 @@
   cursor: pointer;
   padding: 5px;
   border-radius: 3px;
+  width: 70px;
 }
 
 .fileItem:hover {
@@ -136,7 +137,7 @@
 }
 
 .fileItem span {
-  margin-top: 5px;
+  margin-top: 3px;
   font-size: 12px;
   max-width: 100%;
   overflow: hidden;
