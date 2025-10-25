@@ -63,6 +63,7 @@ export default function Home() {
   }
 
   const focusWindow = (id: string | null) => {
+    if (!id) return
     if (minimizedWindows.includes(id)) {
       setMinimizedWindows(minimizedWindows.filter((windowId) => windowId !== id))
     }
@@ -70,6 +71,7 @@ export default function Home() {
   }
 
   const minimizeWindow = (id: string | null) => {
+    if (!id) return
     if (!minimizedWindows.includes(id)) {
       setMinimizedWindows([...minimizedWindows, id])
     }
