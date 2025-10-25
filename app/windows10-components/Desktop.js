@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import DesktopIcon from "./DesktopIcon"
 import Window from "./Window"
+import DesktopGallery from "./DesktopGallery"
 import styles from "./Desktop.module.css"
 import { desktopApps } from "../data/apps"
 
@@ -172,6 +173,8 @@ export default function Desktop({
           />
         )
       })}
+      
+      <DesktopGallery />
     </div>
   )
 }
