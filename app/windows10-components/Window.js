@@ -136,6 +136,7 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
     left: initialPosition.left,
     top: initialPosition.top,
   })
+  const dragOffset = useRef({ x: 0, y: 0 })
   // Store the pre-maximized state to restore when un-maximizing
   const [preMaximizedState, setPreMaximizedState] = useState(null)
   const [isMaximized, setIsMaximized] = useState(false)
@@ -259,10 +260,15 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
       : {
           width: `${windowSize.width}px`,
           height: `${windowSize.height}px`,
-          left: windowPosition.left,
-          top: windowPosition.top,
         }),
   }
+
+  const animateProps = isMaximized
+    ? {}
+    : {
+        x: windowPosition.left,
+        y: windowPosition.top,
+      }
 
   return (
     <motion.div
@@ -277,29 +283,39 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
             : ""
         }`}
         initial={{ scale: 0.9, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        animate={{ ...animateProps, scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
         drag={!isMaximized}
         dragControls={dragControls}
         dragMomentum={false}
-        dragListener={false}
         dragElastic={0}
+        dragListener={false}
         style={windowStyles}
         tabIndex={0}
-        onDragEnd={(event, info) => {
+        onDragStart={(event, info) => {
+          event.preventDefault()
+          event.stopPropagation()
+        }}
+        onDrag={(event, info) => {
+        if (!isMaximized) {
+          dragOffset.current = { x: info.offset.x, y: info.offset.y }
+        }
+      }}
+      onDragEnd={(event, info) => {
         if (!isMaximized) {
           const windowWidth = typeof window !== "undefined" ? window.innerWidth : 1000
           const windowHeight = typeof window !== "undefined" ? window.innerHeight : 800
 
-          // Calculate new position
-          let newLeft = windowPosition.left + info.offset.x
-          let newTop = windowPosition.top + info.offset.y
+          // Calculate new position based on current position
+          let newLeft = windowPosition.left + dragOffset.current.x
+          let newTop = windowPosition.top + dragOffset.current.y
 
           // Ensure window stays within screen boundaries
           newLeft = Math.max(0, Math.min(newLeft, windowWidth - windowSize.width))
           newTop = Math.max(0, Math.min(newTop, windowHeight - windowSize.height - 40))
 
           setWindowPosition({ left: newLeft, top: newTop })
+          dragOffset.current = { x: 0, y: 0 }
         }
       }}
     >

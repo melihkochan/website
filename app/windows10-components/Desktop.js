@@ -59,7 +59,10 @@ export default function Desktop({
     const isClickingIcon = target.closest('[class*="iconContainer"]') || 
                            target.closest('[class*="DesktopIcon"]')
     
-    if (isClickingDesktop && !isClickingIcon) {
+    // Don't start selection if clicking on a window
+    const isClickingWindow = target.closest('[class*="window"]')
+    
+    if (isClickingDesktop && !isClickingIcon && !isClickingWindow) {
       setIsSelecting(true)
       const rect = desktopRef.current.getBoundingClientRect()
       setSelectionStart({

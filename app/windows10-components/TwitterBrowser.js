@@ -44,7 +44,7 @@ export default function TwitterBrowser() {
 
         <div className={styles.urlBar}>
           <Globe size={14} className={styles.urlIcon} />
-          <span className={styles.urlText}>x.com/melihkochan</span>
+          <span className={styles.urlText}>x.com/melihkochan1</span>
         </div>
 
         <div className={styles.browserActions}>

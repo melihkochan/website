@@ -1,13 +1,16 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import { motion, useDragControls } from "framer-motion"
 import styles from "./DesktopIcon.module.css"
 
 export default function DesktopIcon({ app, isSelected, onClick, onDoubleClick }) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 })
+  const [position, setPosition] = useState({ x: 0, y: 0 })
   const iconRef = useRef(null)
+  const dragControls = useDragControls()
 
   // Handle context menu closing
   useEffect(() => {
