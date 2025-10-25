@@ -15,7 +15,6 @@ import LinkedinBrowser from "./LinkedinBrowser"
 import InstagramBrowser from "./InstagramBrowser"
 import MailBrowser from "./MailBrowser"
 import FileExplorer from "./FileExplorer"
-import ResumePdfViewer from "./ResumePdfViewer"
 import SpotifyPlayer from "./SpotifyPlayer"
 import Notepad from "./Notepad"
 
@@ -213,7 +212,15 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
       case "file-explorer":
         return <FileExplorer openWindow={app.openWindow} />
       case "resume-pdf":
-        return <ResumePdfViewer />
+        return (
+          <div style={{ width: '100%', height: '100%' }}>
+            <iframe
+              src="/melihkochancv.pdf"
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              title="Özgeçmiş"
+            />
+          </div>
+        )
       case "spotify":
         return <SpotifyPlayer />
       case "notepad":

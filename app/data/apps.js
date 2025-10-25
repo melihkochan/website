@@ -77,6 +77,11 @@ export const desktopApps = [
       </svg>
     ),
   },
+  {
+    id: "resume-pdf",
+    name: "Özgeçmiş",
+    icon: <FileText size={32} color="#FF0000" />,
+  },
 ]
 
 // Portfolio-related apps for the Start Menu
