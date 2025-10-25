@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import React from "react"
 import Desktop from "./windows10-components/Desktop"
 import Taskbar from "./windows10-components/Taskbar"

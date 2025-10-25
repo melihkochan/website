@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Melih KOÇHAN - Windows 10 Personal Portfolio",
-  description: "Melih KOÇHAN'ın Windows 10 temasında kişisel portfolyo web sitesi",
+  title: "Melih KOÇHAN - Personal Portfolio",
+  description: "Melih KOÇHAN'ın kişisel portfolyo web sitesi",
 };
 
 export default function RootLayout({

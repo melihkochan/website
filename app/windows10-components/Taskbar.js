@@ -1,6 +1,6 @@
 "use client"
 import styles from "./Taskbar.module.css"
-import { Search, Monitor, Mail, Wifi, Volume2, Plane, Bell, BatteryLow, Sun, Bluetooth, Folder } from "lucide-react"
+import { Wifi, Volume2, Plane, Bell, BatteryLow, Sun, Bluetooth, Folder } from "lucide-react"
 import { useState, useEffect } from "react"
 import { allApps } from "../data/apps"
 
@@ -20,7 +20,6 @@ export default function Taskbar({
   const currentDate = new Date().toLocaleDateString()
   const [showTooltip, setShowTooltip] = useState(null)
   const [hoveredIcon, setHoveredIcon] = useState(null)
-  const [isSmallScreen, setIsSmallScreen] = useState(false)
   const [wifiEnabled, setWifiEnabled] = useState(true)
   const [volume, setVolume] = useState(39)
   const [brightness, setBrightness] = useState(100)
@@ -28,21 +27,7 @@ export default function Taskbar({
   const [airplaneMode, setAirplaneMode] = useState(false)
   const [doNotDisturb, setDoNotDisturb] = useState(false)
 
-  // Check screen size on mount and resize
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsSmallScreen(window.innerWidth < 768)
-    }
 
-    // Initial check
-    checkScreenSize()
-
-    // Add event listener for resize
-    window.addEventListener("resize", checkScreenSize)
-
-    // Cleanup
-    return () => window.removeEventListener("resize", checkScreenSize)
-  }, [])
 
   // Brightness control
   useEffect(() => {

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import { Folder, File, ChevronRight, HardDrive, Download, ComputerIcon as Desktop, Code, Github, Linkedin, Instagram, Twitter, Youtube, FileText } from "lucide-react"
+import { Folder, File, ChevronRight, HardDrive, Download, ComputerIcon as Desktop, Github, Linkedin, FileText } from "lucide-react"
 import styles from "./FileExplorer.module.css"
 import { allApps } from "../data/apps"
 

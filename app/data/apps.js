@@ -3,18 +3,12 @@ import {
   Folder,
   Mail,
   Briefcase,
-  Code,
   User,
   Phone,
   GraduationCap,
-  Award,
-  Info,
   Github,
   Linkedin,
-  Instagram,
   FileText,
-  Twitter,
-  Youtube,
 } from "lucide-react"
 
 // Desktop apps - all icons visible
