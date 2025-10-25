@@ -3,6 +3,8 @@
   position: relative;
   overflow: visible;
   padding-top: 50px;
+  background: url('/images/windows-wallpaper.png') center center / cover no-repeat;
+  min-height: 100vh;
 }
 
 .iconGrid {

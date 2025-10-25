@@ -3,7 +3,7 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
-  background: url('/images/windows-wallpaper.png') center center / cover no-repeat;
+  background-color: #000;
   padding-bottom: 0;
 }
 

@@ -397,20 +397,15 @@ export default function Taskbar({
                 onChange={(e) => {
                   const newVolume = parseInt(e.target.value)
                   setVolume(newVolume)
-                  // Control all audio/video elements
+                  // Control all audio/video elements on the page
                   const allMedia = document.querySelectorAll('audio, video')
                   allMedia.forEach(media => {
                     if (media.volume !== undefined) {
                       media.volume = newVolume / 100
                     }
                   })
-                  // Apply visual feedback to Spotify iframe (cannot control volume due to cross-origin)
-                  const spotifyFrame = document.querySelector('iframe[src*="spotify"]')
-                  if (spotifyFrame) {
-                    const opacity = newVolume / 100
-                    spotifyFrame.style.opacity = Math.max(opacity, 0.3)
-                    spotifyFrame.style.filter = `brightness(${opacity * 100}%)`
-                  }
+                  // Spotify iframe: Cannot control volume due to cross-origin restrictions
+                  // No visual feedback applied
                 }}
                 className={styles.volumeSlider}
               />
@@ -461,7 +456,7 @@ export default function Taskbar({
                     fill={airplaneMode ? "#0078D7" : "white"}
                   />
                 </svg>
-                <div>{airplaneMode ? "Uçak Modu Kapalı" : "Uçak Modu"}</div>
+                <div>{airplaneMode ? "Uçak Modu" : "Uçak Modu Kapalı"}</div>
               </button>
               <button
                 className={styles.actionButton}
@@ -474,7 +469,7 @@ export default function Taskbar({
                     fill={doNotDisturb ? "#FF9800" : "white"}
                   />
                 </svg>
-                <div>{doNotDisturb ? "Rahatsız Etme Kapalı" : "Rahatsız Etme"}</div>
+                <div>{doNotDisturb ? "Rahatsız Etme" : "Rahatsız Etme Kapalı"}</div>
               </button>
             </div>
           </div>
