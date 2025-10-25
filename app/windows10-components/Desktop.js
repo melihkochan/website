@@ -73,21 +73,7 @@ export default function Desktop({
     }
   }
 
-  const handleMouseMove = (e) => {
-    if (isSelecting) {
-      const rect = desktopRef.current.getBoundingClientRect()
-      setSelectionEnd({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      })
-    }
-  }
-
-  const handleMouseUp = () => {
-    setIsSelecting(false)
-    setSelectionStart({ x: 0, y: 0 })
-    setSelectionEnd({ x: 0, y: 0 })
-  }
+  // Mouse move and mouse up handlers are now inline in the useEffect hook
 
   const focusWindow = (id) => {
     setActiveWindow(id)
