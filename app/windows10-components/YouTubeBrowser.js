@@ -75,7 +75,7 @@ export default function YouTubeBrowser() {
             </div>
             <h2 className={styles.externalSiteTitle}>YouTube</h2>
             <p className={styles.externalSiteDescription}>
-              YouTube'a gitmek için butona tıklayın.
+              YouTube&apos;a gitmek için butona tıklayın.
             </p>
             <a
               href="https://music.youtube.com/playlist?list=OLAK5uy_kxEBBxOSpwibQZAzX-Sk35e7Bj0vD13rc"
@@ -84,7 +84,7 @@ export default function YouTubeBrowser() {
               className={styles.externalSiteButton}
             >
               <ExternalLink size={16} className={styles.externalLinkIcon} />
-              YouTube'a Git
+              YouTube&apos;a Git
             </a>
           </div>
         )}

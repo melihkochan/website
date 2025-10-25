@@ -295,7 +295,7 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
         dragListener={false}
         style={windowStyles}
         tabIndex={0}
-        onDragStart={(event, info) => {
+        onDragStart={(event) => {
           event.preventDefault()
           event.stopPropagation()
         }}
@@ -320,6 +320,7 @@ export default function Window({ app, onClose, isActive, onFocus, zIndex, onMini
           setWindowPosition({ left: newLeft, top: newTop })
           dragOffset.current = { x: 0, y: 0 }
         }
+        return null
       }}
     >
       <div

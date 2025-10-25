@@ -14,7 +14,6 @@ const images = [
 
 export default function DesktopGallery() {
   const [hoveredIndex, setHoveredIndex] = useState(null)
-  const [selectedIndex, setSelectedIndex] = useState(null)
   const [openedImage, setOpenedImage] = useState(null)
 
   return (
@@ -27,7 +26,7 @@ export default function DesktopGallery() {
           {images.map((src, index) => (
             <div
               key={index}
-              className={`${styles.galleryItem} ${hoveredIndex === index ? styles.hovered : ""} ${selectedIndex === index ? styles.selected : ""}`}
+              className={`${styles.galleryItem} ${hoveredIndex === index ? styles.hovered : ""}`}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
               onClick={() => setOpenedImage(index)}
