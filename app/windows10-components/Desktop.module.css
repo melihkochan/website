@@ -9,10 +9,47 @@
 
 .iconGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   padding: 20px;
-  max-width: 500px;
+  max-width: 600px;
   position: absolute;
   z-index: 1;
+}
+
+.iconGrid > *:nth-child(1) {
+  grid-column: 1 / -1;
+  margin-bottom: 20px;
+}
+
+.iconGrid > *:nth-child(2),
+.iconGrid > *:nth-child(3) {
+  grid-column: auto;
+  justify-self: start;
+}
+
+.iconGrid > *:nth-child(4) {
+  grid-column: 1 / 2;
+  justify-self: start;
+}
+
+.iconGrid > *:nth-child(5) {
+  grid-column: 2 / 3;
+  justify-self: start;
+}
+
+.iconGrid > *:nth-child(6) {
+  grid-column: 1 / 2;
+}
+
+.iconGrid > *:nth-child(7) {
+  grid-column: 2 / 3;
+}
+
+.iconGrid > *:nth-child(8) {
+  grid-column: 3 / 4;
+}
+
+.iconGrid > *:nth-child(9) {
+  grid-column: 4 / 5;
 }

@@ -48,7 +48,7 @@ export default function LinkedinBrowser() {
 
         <div className={styles.urlBar}>
           <Globe size={14} className={styles.urlIcon} />
-          <span className={styles.urlText}>linkedin.com/in/melihkochan</span>
+          <span className={styles.urlText}>linkedin.com/in/melih-kochan-7961371a2/</span>
         </div>
 
         <div className={styles.browserActions}>
@@ -85,7 +85,7 @@ export default function LinkedinBrowser() {
               Due to security restrictions, LinkedIn cannot be displayed in this window.
             </p>
             <a
-              href="https://linkedin.com/in/melihkochan"
+              href="https://www.linkedin.com/in/melih-kochan-7961371a2/"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.externalSiteButton}
