@@ -78,9 +78,9 @@ export default function LoginScreen({ onLogin, onLock }) {
       {/* Center avatar and name */}
       <div className={styles.centerContent}>
         <div className={styles.centerAvatar}>
-          <User size={60} color="white" />
+          <img src="/Melih.png" alt="Melih" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "50%" }} />
         </div>
-        <div className={styles.centerName}>melihkochan</div>
+        <div className={styles.centerName}>Melih KOÇHAN</div>
 
         <form onSubmit={handleSubmit} className={styles.passwordForm}>
           <button type="submit" className={styles.submitButton} disabled={isLoading}>
