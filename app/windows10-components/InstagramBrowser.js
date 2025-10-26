@@ -94,7 +94,7 @@ export default function InstagramBrowser() {
               Instagram profilime erişmek için aşağıdaki linke tıklayın.
             </p>
             <a
-              href="https://www.instagram.com/melihkochan"
+              href="https://www.instagram.com/melih_kochan"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.externalSiteButton}
