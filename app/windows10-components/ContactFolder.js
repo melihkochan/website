@@ -22,8 +22,8 @@ export default function ContactFolder() {
           <Phone size={24} className={styles.contactIcon} />
           <div className={styles.contactDetails}>
             <span className={styles.contactLabel}>Telefon</span>
-            <a href="tel:0540 014 4181" className={styles.contactValue}>
-            0540 014 4181
+            <a href="tel:0 549 436 27 08" className={styles.contactValue}>
+            0 549 436 27 08
             </a>
           </div>
         </div>
